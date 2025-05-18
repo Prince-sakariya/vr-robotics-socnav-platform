@@ -1,0 +1,182 @@
+% Chapter Template
+
+\chapter{Introduction} % Main chapter title
+
+\label{Chapter1} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Background and Motivation}
+% Robot navigation in human environments requires more than obstacle avoidance;
+% it demands social awareness and adherence to human proxemic norms. While 
+% traditional navigation focuses on collision avoidance and path optimization, 
+% social navigation must account for human comfort, cultural norms, and implicit 
+% social rules. Socially-aware robot interaction is a very complex topic and 
+% interdisciplinary by design. It covers robot navigation tasks, social and 
+% cultural rules as well as Human Behaviour Analysis \cite{MOLLERsurvey}. 
+% The development of such mobile social robots poses two main challenges: first, 
+% real experimentation with people is costly and can be dangerous mainly during
+% the initial stages of development, second, difficult to perform and to replicate
+% except for very limited, controlled scenarios. Recent years have seen strides in 
+% social robotics \cite{arenarosnav}, \cite{hunavsimros2human}, \cite{habitat} 
+% with numerous research works proposing platforms and approaches for social 
+% navigation and benchmarking. 
+
+As robots increasingly operate in human-populated environments such as hospitals, 
+shopping malls, and homes, traditional navigation approaches focused solely on 
+collision avoidance and path optimization have proven insufficient. 
+Socially-aware navigation represents a critical advancement that extends 
+beyond obstacle avoidance to incorporate human comfort, cultural norms, 
+and implicit social conventions. This evolution is essential for robots to gain 
+acceptance in shared human spaces.
+Social navigation is inherently interdisciplinary, bridging robotics, social 
+psychology, cultural anthropology, and human-computer interaction. At its core 
+lies the concept of proxemics—the study of human use of space and its cultural 
+variations—first introduced by anthropologist Edward T. Hall in 1966. Hall's 
+delineation of intimate, personal, social, and public interaction zones provides 
+a fundamental framework for robot navigation in human environments, as respecting 
+these invisible boundaries is crucial for social acceptance.
+The development of socially-aware mobile robots faces several significant challenges:
+\begin{itemize}
+    \item \textit{Complexity of Social Rules} - Human spatial behavior is governed by implicit, 
+    context-dependent rules that vary across cultures and situations. These rules are 
+    typically learned intuitively by humans but must be explicitly encoded for robots.
+    \item \textit{Experimentation Challenges} - Real-world testing with humans is 
+    resource-intensive, potentially risky during early development stages, and 
+    difficult to reproduce consistently across different research groups.
+    \item \textit{Interdisciplinary Knowledge Requirements} - Developing effective social navigation 
+    systems demands expertise across multiple domains, creating both research and 
+    educational barriers.
+    \item \textit{Technical Implementation Hurdles} - Integrating social awareness into existing 
+    navigation frameworks requires sophisticated software architecture and computational 
+    efficiency to maintain real-time performance.
+\end{itemize}
+
+Recent advances in social robotics have produced numerous platforms and approaches for 
+addressing these challenges (\cite{arenarosnav}, \cite{hunavsimros2human}, \cite{habitat}). 
+However, these innovations often remain siloed within research laboratories, with limited 
+accessibility for educational purposes. This accessibility gap represents a significant 
+obstacle for preparing the next generation of roboticists to develop socially-aware systems.
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Problem Statement}
+Often times, navigation systems treat humans as mere dynamic obstacles without 
+considering social contexts, leading to behaviors that may be technically efficient 
+but socially inappropriate. This research addresses the gap between technically 
+sound and socially acceptable robot navigation in human-shared spaces. 
+
+Despite significant research advances in social navigation, three critical problems persist:
+\begin{enumerate}
+    \item \textit{Technical-Social Disconnect} - Most deployed robot navigation systems continue to treat 
+    humans as mere dynamic obstacles, disregarding social contexts and norms. This approach 
+    leads to behaviors that may be computationally efficient but socially inappropriate or 
+    discomforting to humans sharing the space.
+    \item \textit{Educational Access Barriers} - Existing social navigation implementations typically demand 
+    extensive technical expertise and computational resources, making them inaccessible for 
+    educational purposes. Students face significant hurdles in learning about and 
+    experimenting with social navigation concepts due to complex installation requirements, 
+    dependencies, and hardware constraints.
+    \item \textit{Lack of Standardized Learning Tools} - While several research platforms exist, there is a 
+    notable absence of standardized educational tools that demonstrate social navigation 
+    concepts in a structured, pedagogically sound manner. This gap impedes effective 
+    teaching and learning of this increasingly important aspect of robotics.
+\end{enumerate}
+
+This thesis addresses these interconnected problems by developing an accessible, education-focused platform that bridges the gap between advanced social navigation research and practical robotics education.
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{Research objectives}
+% As part of the Bachelor thesis, the system will be developed with educational use in mind.
+% The goal is to create a testbench for social robot navigation that allows to be employed 
+% both reserach and teaching purposes: a virtual laboratory experiment that a) demonstrate 
+% a variety of off-the-shelf social navigation algorithms, b) show the effect of user-defined
+% custom cost functions and/or evaluation metrics used in navigation algorithms, c) modify 
+% human behaviour simulation, and (optionally / ideally) d) run custom social navigation 
+% algorithms. The following subsections define the tasks in detail.
+
+This bachelor thesis aims to develop an educational system for teaching and experimenting 
+with social robot navigation concepts. The primary goal is to create a virtual laboratory 
+environment that lowers technical barriers and provides structured learning experiences. 
+Specific objectives include:
+
+\begin{enumerate}
+    \item \textbf{Create an accessible virtual testbench} that demonstrates various social navigation concepts 
+    without requiring extensive technical setup or specialized hardware. This environment will:
+    \begin{itemize}
+        \item Integrate existing open-source social navigation implementations
+        \item Provide a virtualized environment that runs efficiently on standard student hardware
+        \item Offer a unified interface for interaction with different navigation approaches
+    \end{itemize}
+    
+    \item \textbf{Develop structured educational experiments} that:
+    \begin{itemize}
+        \item Demonstrate a variety of off-the-shelf social navigation algorithms
+        \item Illustrate the effects of different proxemic models and parameter configurations
+        \item Allow comparison between socially-aware and traditional navigation approaches
+        \item Showcase the impact of environmental context on navigation behavior
+    \end{itemize}
+    
+    \item \textbf{Enable hands-on experimentation} through:
+    \begin{itemize}
+        \item Real-time costmap parameter modification
+        \item Customizable evaluation metrics for navigation performance
+        \item Visualization tools for understanding algorithm decision-making
+    \end{itemize}
+    
+    \item \textbf{Create comprehensive educational materials} including:
+    \begin{itemize}
+        \item Laboratory exercises with clear learning objectives
+        \item Documentation explaining theoretical concepts and their implementation
+        \item Guided exploration activities with progressive complexity
+    \end{itemize}
+\end{enumerate}
+
+
+The system is designed primarily for undergraduate and graduate robotics courses, 
+enabling students to develop an intuitive understanding of social navigation 
+principles through direct experimentation before potentially developing their 
+own implementations.
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+
+\section{Scope and Limitations}
+
+This thesis focuses on creating an educational platform for social navigation rather than developing novel navigation algorithms or proxemic models. The scope encompasses:
+
+\subsection*{In Scope:}
+\begin{itemize}
+    \item Integration of existing open-source social navigation implementations
+    \item Development of a virtualized environment for accessible deployment
+    \item Creation of standardized test scenarios for comparative evaluation
+    \item Design of structured educational experiments and supporting materials
+    \item Implementation of visualization tools for algorithm behavior and decision processes
+    \item Extension of existing platforms with missing components required for educational purposes
+\end{itemize}
+
+\subsection*{Out of Scope:}
+\begin{itemize}
+    \item Development of fundamentally new social navigation algorithms
+    \item Large-scale human studies to validate navigation approaches
+    \item Physical robot implementation and testing
+    \item Cross-platform compatibility beyond the specified virtualization approach
+    \item Comprehensive cultural adaptation of proxemic models
+\end{itemize}
+
+\subsection*{Limitations:}
+\begin{itemize}
+    \item The system will prioritize educational clarity over computational performance
+    \item Simulated human behaviors will represent simplified models of actual human movement patterns
+    \item The virtualized environment introduces some performance overhead compared to native installation
+    \item The platform targets educational use cases rather than deployment-ready implementations
+\end{itemize}
+
+These scope boundaries ensure the project remains achievable within the constraints of a 
+bachelor thesis while still delivering significant educational value through an accessible 
+platform for teaching social navigation concepts.

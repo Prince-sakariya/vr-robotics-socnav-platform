@@ -1,0 +1,1038 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyt/global//global/global}
+  \entry{chen2018sociallyawaremotionplanning}{misc}{}
+    \name{author}{4}{}{%
+      {{hash=CYF}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Yu\bibnamedelima Fan},
+         giveni={Y\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=EM}{%
+         family={Everett},
+         familyi={E\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=LM}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={Miao},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=HJP}{%
+         family={How},
+         familyi={H\bibinitperiod},
+         given={Jonathan\bibnamedelima P.},
+         giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CYF+1}
+    \strng{fullhash}{CYFEMLMHJP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \verb{eprint}
+    \verb 1703.08862
+    \endverb
+    \field{title}{Socially Aware Motion Planning with Deep Reinforcement
+  Learning}
+    \verb{url}
+    \verb https://arxiv.org/abs/1703.08862
+    \endverb
+    \field{eprinttype}{arXiv}
+    \field{eprintclass}{[cs.RO](http://cs.ro/)}
+    \field{year}{2018}
+  \endentry
+
+  \entry{proxemicstheoryHall}{article}{}
+    \name{author}{18}{}{%
+      {{hash=HET}{%
+         family={Hall},
+         familyi={H\bibinitperiod},
+         given={Edward\bibnamedelima T.},
+         giveni={E\bibinitperiod\bibinitdelim T\bibinitperiod},
+      }}%
+      {{hash=BRL}{%
+         family={Birdwhistell},
+         familyi={B\bibinitperiod},
+         given={Ray\bibnamedelima L.},
+         giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=BB}{%
+         family={Bock},
+         familyi={B\bibinitperiod},
+         given={Bernhard},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=BP}{%
+         family={Bohannan},
+         familyi={B\bibinitperiod},
+         given={Paul},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=DAR}{%
+         family={Diebold},
+         familyi={D\bibinitperiod},
+         given={A.\bibnamedelima Richard},
+         giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=DM}{%
+         family={Durbin},
+         familyi={D\bibinitperiod},
+         given={Marshall},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=EMS}{%
+         family={Edmonson},
+         familyi={E\bibinitperiod},
+         given={Munro\bibnamedelima S.},
+         giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=FJL}{%
+         family={Fischer},
+         familyi={F\bibinitperiod},
+         given={J.\bibnamedelima L.},
+         giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=HD}{%
+         family={Hymes},
+         familyi={H\bibinitperiod},
+         given={Dell},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=KST}{%
+         family={Kimball},
+         familyi={K\bibinitperiod},
+         given={Solon\bibnamedelima T.},
+         giveni={S\bibinitperiod\bibinitdelim T\bibinitperiod},
+      }}%
+      {{hash=LBW}{%
+         family={La\bibnamedelima Barre},
+         familyi={L\bibinitperiod\bibinitdelim B\bibinitperiod},
+         given={Weston},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=}{%
+      }}%
+      {{hash=MJE}{%
+         family={McClellan},
+         familyi={M\bibinitperiod},
+         given={J.\bibnamedelima E.},
+         giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=MDS}{%
+         family={Marshall},
+         familyi={M\bibinitperiod},
+         given={Donald\bibnamedelima S.},
+         giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=MGB}{%
+         family={Milner},
+         familyi={M\bibinitperiod},
+         given={G.\bibnamedelima B.},
+         giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=SHB}{%
+         family={Sarles},
+         familyi={S\bibinitperiod},
+         given={Harvey\bibnamedelima B.},
+         giveni={H\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=TGL}{%
+         family={Trager},
+         familyi={T\bibinitperiod},
+         given={George\bibnamedelima L},
+         giveni={G\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=VAP}{%
+         family={Vayda},
+         familyi={V\bibinitperiod},
+         given={Andrew\bibnamedelima P.},
+         giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HET+1}
+    \strng{fullhash}{HETBRLBBBPDARDMEMSFJLHDKSTLBWMJEMDSMGBSHBTGLVAP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1968}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \verb{doi}
+    \verb 10.1086/200975
+    \endverb
+    \verb{eprint}
+    \verb https://doi.org/10.1086/200975
+    \endverb
+    \field{number}{2/3}
+    \field{pages}{83\bibrangedash 108}
+    \field{title}{Proxemics [and Comments and Replies]}
+    \verb{url}
+    \verb https://doi.org/10.1086/200975
+    \endverb
+    \field{volume}{9}
+    \field{journaltitle}{Current Anthropology}
+    \field{year}{1968}
+  \endentry
+
+  \entry{Helbing_1995}{article}{}
+    \name{author}{2}{}{%
+      {{hash=HD}{%
+         family={Helbing},
+         familyi={H\bibinitperiod},
+         given={Dirk},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=MP}{%
+         family={Molnár},
+         familyi={M\bibinitperiod},
+         given={Péter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {American Physical Society (APS)}%
+    }
+    \strng{namehash}{HDMP1}
+    \strng{fullhash}{HDMP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1995}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \verb{doi}
+    \verb 10.1103/physreve.51.4282
+    \endverb
+    \field{issn}{1095-3787}
+    \field{number}{5}
+    \field{pages}{4282–4286}
+    \field{title}{Social force model for pedestrian dynamics}
+    \verb{url}
+    \verb http://dx.doi.org/10.1103/PhysRevE.51.4282
+    \endverb
+    \field{volume}{51}
+    \field{journaltitle}{Physical Review E}
+    \field{month}{05}
+    \field{year}{1995}
+  \endentry
+
+  \entry{henkel}{article}{}
+    \name{author}{4}{}{%
+      {{hash=HZ}{%
+         family={Henkel},
+         familyi={H\bibinitperiod},
+         given={Zachary},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=BC}{%
+         family={Bethel},
+         familyi={B\bibinitperiod},
+         given={Cindy},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={Murphy},
+         familyi={M\bibinitperiod},
+         given={Robin},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=SV}{%
+         family={Srinivasan},
+         familyi={S\bibinitperiod},
+         given={Vasant},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HZ+1}
+    \strng{fullhash}{HZBCMRSV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2014}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \verb{doi}
+    \verb 10.1109/THMS.2014.2304075
+    \endverb
+    \field{pages}{374\bibrangedash 385}
+    \field{title}{Evaluation of Proxemic Scaling Functions for Social Robotics}
+    \field{volume}{44}
+    \field{journaltitle}{Human-Machine Systems, IEEE Transactions on}
+    \field{month}{06}
+    \field{year}{2014}
+  \endentry
+
+  \entry{arenabench}{article}{}
+    \name{author}{12}{}{%
+      {{hash=KL}{%
+         family={Kastner},
+         familyi={K\bibinitperiod},
+         given={Linh},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=BT}{%
+         family={Bhuiyan},
+         familyi={B\bibinitperiod},
+         given={Teham},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=LTA}{%
+         family={Le},
+         familyi={L\bibinitperiod},
+         given={Tuan\bibnamedelima Anh},
+         giveni={T\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=TE}{%
+         family={Treis},
+         familyi={T\bibinitperiod},
+         given={Elias},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=CJ}{%
+         family={Cox},
+         familyi={C\bibinitperiod},
+         given={Johannes},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MB}{%
+         family={Meinardus},
+         familyi={M\bibinitperiod},
+         given={Boris},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=KJ}{%
+         family={Kmiecik},
+         familyi={K\bibinitperiod},
+         given={Jacek},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CR}{%
+         family={Carstens},
+         familyi={C\bibinitperiod},
+         given={Reyk},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=PD}{%
+         family={Pichel},
+         familyi={P\bibinitperiod},
+         given={Duc},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=FB}{%
+         family={Fatloun},
+         familyi={F\bibinitperiod},
+         given={Bassel},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=KN}{%
+         family={Khorsandi},
+         familyi={K\bibinitperiod},
+         given={Niloufar},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=LJ}{%
+         family={Lambrecht},
+         familyi={L\bibinitperiod},
+         given={Jens},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {Institute of Electrical}%
+      {Electronics Engineers (IEEE)}%
+    }
+    \strng{namehash}{KL+1}
+    \strng{fullhash}{KLBTLTATECJMBKJCRPDFBKNLJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2022}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \verb{doi}
+    \verb 10.1109/lra.2022.3190086
+    \endverb
+    \field{issn}{2377-3774}
+    \field{number}{4}
+    \field{pages}{9477–9484}
+    \field{title}{Arena-Bench: A Benchmarking Suite for Obstacle Avoidance
+  Approaches in Highly Dynamic Environments}
+    \verb{url}
+    \verb http://dx.doi.org/10.1109/LRA.2022.3190086
+    \endverb
+    \field{volume}{7}
+    \field{journaltitle}{IEEE Robotics and Automation Letters}
+    \field{month}{10}
+    \field{year}{2022}
+  \endentry
+
+  \entry{KRUSE20131726}{article}{}
+    \name{author}{4}{}{%
+      {{hash=KT}{%
+         family={Kruse},
+         familyi={K\bibinitperiod},
+         given={Thibault},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=PAK}{%
+         family={Pandey},
+         familyi={P\bibinitperiod},
+         given={Amit\bibnamedelima Kumar},
+         giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+      {{hash=AR}{%
+         family={Alami},
+         familyi={A\bibinitperiod},
+         given={Rachid},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Kirsch},
+         familyi={K\bibinitperiod},
+         given={Alexandra},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \keyw{Autonomous robot, Navigation, Human-aware, Human-centered
+  environment, Survey}
+    \strng{namehash}{KT+1}
+    \strng{fullhash}{KTPAKARKA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2013}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.robot.2013.05.007
+    \endverb
+    \field{issn}{0921-8890}
+    \field{number}{12}
+    \field{pages}{1726\bibrangedash 1743}
+    \field{title}{Human-aware robot navigation: A survey}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0921889013001048
+    \endverb
+    \field{volume}{61}
+    \field{journaltitle}{Robotics and Autonomous Systems}
+    \field{year}{2013}
+  \endentry
+
+  \entry{arenarosnav}{misc}{}
+    \name{author}{6}{}{%
+      {{hash=KL}{%
+         family={Kästner},
+         familyi={K\bibinitperiod},
+         given={Linh},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=BT}{%
+         family={Buiyan},
+         familyi={B\bibinitperiod},
+         given={Teham},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=ZX}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Xinlin},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=JL}{%
+         family={Jiao},
+         familyi={J\bibinitperiod},
+         given={Lei},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=SZ}{%
+         family={Shen},
+         familyi={S\bibinitperiod},
+         given={Zhengcheng},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=LJ}{%
+         family={Lambrecht},
+         familyi={L\bibinitperiod},
+         given={Jens},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KL+2}
+    \strng{fullhash}{KLBTZXJLSZLJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \verb{eprint}
+    \verb 2104.03616
+    \endverb
+    \field{title}{Arena-Rosnav: Towards Deployment of
+  Deep-Reinforcement-Learning-Based Obstacle Avoidance into Conventional
+  Autonomous Navigation Systems}
+    \verb{url}
+    \verb https://arxiv.org/abs/2104.03616
+    \endverb
+    \field{eprinttype}{arXiv}
+    \field{eprintclass}{[cs.RO](http://cs.ro/)}
+    \field{year}{2021}
+  \endentry
+
+  \entry{MOLLERsurvey}{article}{}
+    \name{author}{5}{}{%
+      {{hash=MR}{%
+         family={Möller},
+         familyi={M\bibinitperiod},
+         given={Ronja},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Furnari},
+         familyi={F\bibinitperiod},
+         given={Antonino},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=BS}{%
+         family={Battiato},
+         familyi={B\bibinitperiod},
+         given={Sebastiano},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=HA}{%
+         family={Härmä},
+         familyi={H\bibinitperiod},
+         given={Aki},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=FGM}{%
+         family={Farinella},
+         familyi={F\bibinitperiod},
+         given={Giovanni\bibnamedelima Maria},
+         giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \keyw{Robot navigation, Human robot interaction, Active vision, Activity
+  recognition}
+    \strng{namehash}{MR+1}
+    \strng{fullhash}{MRFABSHAFGM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{abstract}{%
+    Intelligent systems are increasingly part of our everyday lives and have
+  been integrated seamlessly to the point where it is difficult to imagine a
+  world without them. Physical manifestations of those systems on the other
+  hand, in the form of embodied agents or robots, have so far been used only
+  for specific applications and are often limited to functional roles (e.g. in
+  the industry, entertainment and military fields). Given the current growth
+  and innovation in the research communities concerned with the topics of robot
+  navigation, human–robot-interaction and human activity recognition, it
+  seems like this might soon change. Robots are increasingly easy to obtain and
+  use and the acceptance of them in general is growing. However, the design of
+  a socially compliant robot that can function as a companion needs to take
+  various areas of research into account. This paper is concerned with the
+  navigation aspect of a socially-compliant robot and provides a survey of
+  existing solutions for the relevant areas of research as well as an outlook
+  on possible future directions.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.robot.2021.103837
+    \endverb
+    \field{issn}{0921-8890}
+    \field{pages}{103837}
+    \field{title}{A survey on human-aware robot navigation}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0921889021001226
+    \endverb
+    \field{volume}{145}
+    \field{journaltitle}{Robotics and Autonomous Systems}
+    \field{year}{2021}
+  \endentry
+
+  \entry{hunavsimros2human}{misc}{}
+    \name{author}{4}{}{%
+      {{hash=PHN}{%
+         family={Pérez-Higueras},
+         familyi={P\bibinithyphendelim H\bibinitperiod},
+         given={Noé},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=OR}{%
+         family={Otero},
+         familyi={O\bibinitperiod},
+         given={Roberto},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=CF}{%
+         family={Caballero},
+         familyi={C\bibinitperiod},
+         given={Fernando},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=ML}{%
+         family={Merino},
+         familyi={M\bibinitperiod},
+         given={Luis},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PHN+1}
+    \strng{fullhash}{PHNORCFML1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2023}
+    \field{labeldatesource}{}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \verb{eprint}
+    \verb 2305.01303
+    \endverb
+    \field{title}{HuNavSim: A ROS 2 Human Navigation Simulator for Benchmarking
+  Human-Aware Robot Navigation}
+    \verb{url}
+    \verb https://arxiv.org/abs/2305.01303
+    \endverb
+    \field{eprinttype}{arXiv}
+    \field{eprintclass}{[cs.RO](http://cs.ro/)}
+    \field{year}{2023}
+  \endentry
+
+  \entry{riosmartinez2015proxemics}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RMJ}{%
+         family={Rios-Martinez},
+         familyi={R\bibinithyphendelim M\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SA}{%
+         family={Spalanzani},
+         familyi={S\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=LC}{%
+         family={Laugier},
+         familyi={L\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RMJSALC1}
+    \strng{fullhash}{RMJSALC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2015}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \verb{doi}
+    \verb 10.1007/s12369-014-0251-1
+    \endverb
+    \field{number}{2}
+    \field{pages}{137\bibrangedash 153}
+    \field{title}{From proxemics theory to socially-aware navigation: A survey}
+    \verb{url}
+    \verb https://doi.org/10.1007/s12369-014-0251-1
+    \endverb
+    \field{volume}{7}
+    \field{journaltitle}{International Journal of Social Robotics}
+    \field{year}{2015}
+  \endentry
+
+  \entry{MPCwithsfm}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=SF}{%
+         family={Sacco},
+         familyi={S\bibinitperiod},
+         given={Federico},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=RC}{%
+         family={Recchiuto},
+         familyi={R\bibinitperiod},
+         given={Carmine},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Mårtensson},
+         familyi={M\bibinitperiod},
+         given={Jonas},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \keyw{Measurement;Pedestrians;Navigation;Roads;Force;Urban areas;Predictive
+  models;Mobile robots;Robots;Predictive control}
+    \strng{namehash}{SFRCMJ1}
+    \strng{fullhash}{SFRCMJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2024}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{booktitle}{2024 33rd IEEE International Conference on Robot and
+  Human Interactive Communication (ROMAN)}
+    \verb{doi}
+    \verb 10.1109/RO-MAN60168.2024.10731256
+    \endverb
+    \field{pages}{1705\bibrangedash 1711}
+    \field{title}{A Novel Social Navigation Approach Based on Model Predictive
+  Control and Social Force Model}
+    \field{year}{2024}
+  \endentry
+
+  \entry{habitat}{inproceedings}{}
+    \name{author}{12}{}{%
+      {{hash=SM}{%
+         family={Savva},
+         familyi={S\bibinitperiod},
+         given={Manolis},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Kadian},
+         familyi={K\bibinitperiod},
+         given={Abhishek},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MO}{%
+         family={Maksymets},
+         familyi={M\bibinitperiod},
+         given={Oleksandr},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=ZY}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Yili},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=WE}{%
+         family={Wijmans},
+         familyi={W\bibinitperiod},
+         given={Erik},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=JB}{%
+         family={Jain},
+         familyi={J\bibinitperiod},
+         given={Bhavana},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Straub},
+         familyi={S\bibinitperiod},
+         given={Julian},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=LJ}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={Jia},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Koltun},
+         familyi={K\bibinitperiod},
+         given={Vladlen},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Malik},
+         familyi={M\bibinitperiod},
+         given={Jitendra},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=PD}{%
+         family={Parikh},
+         familyi={P\bibinitperiod},
+         given={Devi},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Batra},
+         familyi={B\bibinitperiod},
+         given={Dhruv},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \keyw{Sensors;Three-dimensional displays;Artificial intelligence;Task
+  analysis;Navigation;Training;Robots}
+    \strng{namehash}{SM+1}
+    \strng{fullhash}{SMKAMOZYWEJBSJLJKVMJPDBD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{booktitle}{2019 IEEE/CVF International Conference on Computer Vision
+  (ICCV)}
+    \verb{doi}
+    \verb 10.1109/ICCV.2019.00943
+    \endverb
+    \field{pages}{9338\bibrangedash 9346}
+    \field{title}{Habitat: A Platform for Embodied AI Research}
+    \field{year}{2019}
+  \endentry
+
+  \entry{szot2022habitat20traininghome}{misc}{}
+    \name{author}{21}{}{%
+      {{hash=SA}{%
+         family={Szot},
+         familyi={S\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Clegg},
+         familyi={C\bibinitperiod},
+         given={Alex},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=UE}{%
+         family={Undersander},
+         familyi={U\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=WE}{%
+         family={Wijmans},
+         familyi={W\bibinitperiod},
+         given={Erik},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=ZY}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Yili},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=TJ}{%
+         family={Turner},
+         familyi={T\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MN}{%
+         family={Maestre},
+         familyi={M\bibinitperiod},
+         given={Noah},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Mukadam},
+         familyi={M\bibinitperiod},
+         given={Mustafa},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Chaplot},
+         familyi={C\bibinitperiod},
+         given={Devendra},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=MO}{%
+         family={Maksymets},
+         familyi={M\bibinitperiod},
+         given={Oleksandr},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Gokaslan},
+         familyi={G\bibinitperiod},
+         given={Aaron},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=VV}{%
+         family={Vondrus},
+         familyi={V\bibinitperiod},
+         given={Vladimir},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=DS}{%
+         family={Dharur},
+         familyi={D\bibinitperiod},
+         given={Sameer},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=MF}{%
+         family={Meier},
+         familyi={M\bibinitperiod},
+         given={Franziska},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=GW}{%
+         family={Galuba},
+         familyi={G\bibinitperiod},
+         given={Wojciech},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Chang},
+         familyi={C\bibinitperiod},
+         given={Angel},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KZ}{%
+         family={Kira},
+         familyi={K\bibinitperiod},
+         given={Zsolt},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Koltun},
+         familyi={K\bibinitperiod},
+         given={Vladlen},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Malik},
+         familyi={M\bibinitperiod},
+         given={Jitendra},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Savva},
+         familyi={S\bibinitperiod},
+         given={Manolis},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Batra},
+         familyi={B\bibinitperiod},
+         given={Dhruv},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SA+1}
+    \strng{fullhash}{SACAUEWEZYTJMNMMCDMOGAVVDSMFGWCAKZKVMJSMBD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2022}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \verb{eprint}
+    \verb 2106.14405
+    \endverb
+    \field{title}{Habitat 2.0: Training Home Assistants to Rearrange their
+  Habitat}
+    \verb{url}
+    \verb https://arxiv.org/abs/2106.14405
+    \endverb
+    \field{eprinttype}{arXiv}
+    \field{eprintclass}{cs.LG}
+    \field{year}{2022}
+  \endentry
+
+  \entry{tsoi2022sean2}{article}{}
+    \name{author}{10}{}{%
+      {{hash=TN}{%
+         family={Tsoi},
+         familyi={T\bibinitperiod},
+         given={Nathan},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=XA}{%
+         family={Xiang},
+         familyi={X\bibinitperiod},
+         given={Alec},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=YP}{%
+         family={Yu},
+         familyi={Y\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=SSS}{%
+         family={Sohn},
+         familyi={S\bibinitperiod},
+         given={Samuel\bibnamedelima S.},
+         giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=SG}{%
+         family={Schwartz},
+         familyi={S\bibinitperiod},
+         given={Greg},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=RS}{%
+         family={Ramesh},
+         familyi={R\bibinitperiod},
+         given={Subashri},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=HM}{%
+         family={Hussein},
+         familyi={H\bibinitperiod},
+         given={Mohamed},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=GAW}{%
+         family={Gupta},
+         familyi={G\bibinitperiod},
+         given={Anjali\bibnamedelima W.},
+         giveni={A\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=KM}{%
+         family={Kapadia},
+         familyi={K\bibinitperiod},
+         given={Mubbasir},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=VM}{%
+         family={Vázquez},
+         familyi={V\bibinitperiod},
+         given={Marynel},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TN+1}
+    \strng{fullhash}{TNXAYPSSSSGRSHMGAWKMVM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2022}
+    \field{labeldatesource}{}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \verb{doi}
+    \verb 10.1109/LRA.2022.3196783
+    \endverb
+    \field{pages}{1\bibrangedash 8}
+    \field{title}{SEAN 2.0: Formalizing and Generating Social Situations for
+  Robot Navigation}
+    \field{journaltitle}{IEEE Robotics and Automation Letters}
+    \field{year}{2022}
+  \endentry
+\enddatalist
+\endinput

@@ -1,0 +1,95 @@
+\chapter{Evaluation Pipeline for Arena-Rosnav}
+\label{appendix:evaluation}
+
+This appendix outlines the procedure for evaluating simulation results using the tools provided in the Arena-Rosnav framework.
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+\section{Environment Setup}
+
+\begin{enumerate}
+  \item Open the Arena workspace in VS Code:
+  
+  \begin{lstlisting}[language=bash]
+    cd /home/dev/arena_ws
+    code .
+  \end{lstlisting}
+
+  \item Open a new terminal in VS Code: \texttt{Ctrl + Shift + \`}
+
+  \item Activate the poetry environment:
+  
+  \begin{lstlisting}[language=bash]
+    cd ~/arena_ws/src/arena/arena-rosnav
+    poetry shell
+    cd ~/arena_ws/src/arena/evaluation/arena_evaluation/
+    scripts
+  \end{lstlisting}
+\end{enumerate}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+\section{Generating Evaluation Metrics}
+
+\begin{enumerate}
+  \item Suppose your recorded data is located at:
+  
+  \begin{quote}
+    \texttt{/home/dev/arena\_ws/src/arena/evaluation/arena\_evaluation \\
+    /data/25-05-03\_11-49-11/jackal}
+  \end{quote}
+
+  This directory should contain the following files:
+  \begin{itemize}
+    \item \texttt{episode.csv}
+    \item \texttt{odom.csv}
+    \item \texttt{params.yaml}
+    \item \texttt{pedsim\_agents\_data.csv}
+    \item \texttt{scan.csv}
+    \item \texttt{start\_goal.csv}
+  \end{itemize}
+
+  \item Run the following command to compute evaluation metrics (replace path as necessary):
+
+  \begin{lstlisting}[language=bash]
+    python get_metrics /home/dev/arena_ws/src/arena/
+    evaluation/arena_evaluation/data/25-05-03_11-49-11/
+    jackal --pedsim
+  \end{lstlisting}
+
+  \item A new file \texttt{metrics.csv} will be generated in the data directory.
+\end{enumerate}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+\section{Plotting Evaluation Results}
+
+\begin{enumerate}
+  \item Navigate to the \texttt{plot\_declarations} directory and create a YAML configuration file:
+
+  \begin{lstlisting}[language=bash]
+    cd ~/arena_ws/src/arena/evaluation/arena_evaluation
+    /plot_declarations
+    touch eval_teb_2025.yaml
+  \end{lstlisting}
+
+  \item Copy contents from \texttt{sample\_schema.yaml} into your new file:
+
+  \begin{lstlisting}[language=bash]
+    cp sample_schema.yaml eval_teb_2025.yaml
+  \end{lstlisting}
+
+  \item Edit the YAML file to match your evaluation data and desired plots.
+
+  \item Generate plots using the following command (adjust path as necessary):
+
+  \begin{lstlisting}[language=bash]
+    python create_plots /home/dev/arena_ws/src/arena
+    /evaluation/arena_evaluation/plot_declarations/
+    eval_teb_2025.yaml
+  \end{lstlisting}
+\end{enumerate}

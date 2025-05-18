@@ -1,0 +1,241 @@
+% Chapter Template
+
+\chapter{Literature Review} % Main chapter title
+
+\label{Chapter2} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Social Navigation in Robotics}
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+\subsection{Definition and Importance}
+\cite{riosmartinez2015proxemics}\ gave a compact description of socially-aware navigation: 
+\emph{``Socially-aware navigation is the strategy exhibited by a social robot that identifies 
+and follows social conventions (in terms of management of space) to preserve a comfortable 
+interaction with humans. The resulting behavior is predictable, adaptable, and easily 
+understood by humans.''} This definition implies that, from the robot's point of view, 
+humans are no longer perceived only as dynamic obstacles but also as social entities.
+
+The importance of social navigation is paramount for robots (\cite{KRUSE20131726}) intended to operate in human-centric 
+environments such as homes, hospitals, shopping malls, offices, and public spaces. 
+As robots become increasingly integrated into our daily lives, their ability to interact seamlessly 
+and naturally with humans is crucial for their acceptance and widespread adoption. Poor social 
+navigation can lead to discomfort, anxiety, inefficiency, and even safety hazards for humans. 
+Conversely, robots capable of navigating socially appropriately can enhance human productivity, 
+provide assistance in various tasks, and improve overall quality of life. Furthermore, in 
+applications like assistive robotics and healthcare, the ability of a robot to navigate in 
+close proximity to individuals, while maintaining their comfort and safety, is fundamental (\cite{MOLLERsurvey}).
+
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\subsection{Key Challenges}
+\label{subsec:key_challenges}
+Developing robust social navigation capabilities in robots presents several key challenges:
+
+\begin{itemize}
+    \item \textbf{Human Behavior Prediction:} Humans are inherently unpredictable. Their motion 
+    patterns are influenced by a multitude of factors including their goals, intentions, 
+    emotions, social context, and cultural background. Accurately predicting human trajectories 
+    and intentions is a significant challenge, requiring sophisticated models that can capture 
+    the nuances of human behavior.
+    \item \textbf{Social Norms and Etiquette:} Navigating social environments requires adherence 
+    to a complex set of implicit social norms and etiquette. These norms can vary across cultures 
+    and situations. Robots need to understand and respect these norms, such as maintaining 
+    appropriate personal space, avoiding sudden or erratic movements, and yielding to pedestrians 
+    in certain situations.
+    \item \textbf{Uncertainty and Dynamic Environments:} Human-populated environments are inherently 
+    dynamic and uncertain. People may change their direction or speed unexpectedly, form groups, 
+    or engage in interactions that affect robot navigation. Robots must be able to perceive and 
+    react to these dynamic changes in real-time while maintaining their navigation goals.
+    \item \textbf{Computational Complexity:} Implementing sophisticated models for human behavior 
+    prediction, social norm understanding, and real-time adaptation can be computationally demanding. 
+    Developing efficient algorithms that can run on robot platforms with limited computational 
+    resources is a crucial challenge.
+    \item \textbf{Evaluation Metrics and Benchmarking:} Defining appropriate metrics to evaluate 
+    the social acceptability and effectiveness of robot navigation is challenging. Establishing 
+    standardized benchmarks and simulation environments is necessary to facilitate the comparison 
+    and progress of different social navigation approaches.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Proxemics and Human-Robot Interaction}
+
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+
+\subsection{Proxemics Theory}
+Edward Hall's theory of proxemics \cite{proxemicstheoryHall} suggests
+that people will maintain differing degrees of personal distance depending on the 
+social setting and their cultural backgrounds. 
+\begin{itemize}
+    \item \textit{Intimate space} - the clossest ``bubble'' of space surrounding a person.
+    Entry into this space is acceptable only for the closest friends and intimates.
+    \item \textit{Social and consultative spaces} - the spaces in which people feel 
+    comfortable conducting routine social ineractions with acquaintances as well as 
+    strangers.
+    \item \textit{Public space} - the area of space beyond which people will perceive 
+    iteractions as impersonal and relatively anonymous.
+\end{itemize}
+The main contribution of Hall's Proxemics into path planning consists of providing a 
+framework to build social maps, i.e. dynamic maps in which humans are perceived 
+as obstacles following the definition of Hall's personal space.   
+The work by Henkel et al. \cite{henkel} evaluates different distance strategies by how 
+they affect the human's perception of the robot's likeability, intelligence and submissiveness.
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\subsection{Application in Robotics}
+Proxemics has been employed in robotics to guide the development of spatially aware path 
+planning. Robots use proxemic principles to maintain comfortable distances from humans, 
+avoid intrusions into personal zones, and adjust their behavior based on environmental 
+context. Several implementations integrate proxemic rules into costmaps and behavior 
+trees to ensure adherence to social comfort zones, increasing user satisfaction and 
+perceived safety. Proxemic-aware navigation also supports differentiated behaviors 
+depending on robot intent — for example, service robots vs. delivery robots — providing 
+richer HRI experiences
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{Simulation Platforms for Social Navigation}
+Helbing et al. \cite{Helbing_1995} show that pedestrian motion can be described by a simple 
+social force model for individual pedestrian behavior. The social force model is an essential 
+component in many platforms including Arena-rosnav \cite{arenabench}, HuNavSim \cite{hunavsimros2human}
+etc. to simulate the pedestrian movements. 
+The navigation comprises of path planners and costmaps. There are two types of planners - global 
+planner determines a path from the current location to the goal location, and a local planner 
+follows the global path. Costmaps are created using static maps and real-time data from onboard
+sensors. \\
+
+Sacco et al. \cite{MPCwithsfm} use A* global planner and an MPC, with a detailed cost 
+function to achieve advanced social navigation capabilities with the help of SMPC (Social 
+Model Predictive Control) software stack. They leverage the predicitvity of MPC and the 
+reactivity of SFM, modelling the pedestrian motion.\\
+
+Chen et al. \cite{chen2018sociallyawaremotionplanning} presented SA-CADRL (Socially Aware Collision 
+Avoidance with Deep Reinforcement Learning) to explain/induce socially aware behaviors in a RL 
+framework. They generalized to multiagent ($n > 2$) scenarios through developing symmetrical neural
+network structure, and demonstrated on robotic hardware autonomous navigation at human walking 
+speed in a pedestrian-rich environment. \\
+
+There exist various other approaches based on traditional algoritms as well as novel 
+Neural Network, Deep Reinforcement Learning etc. In the next section, several simulation platforms,
+their advantages and disadvantages are described. 
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+
+\subsection{Overview of Existing Platforms}
+This section focuses on capabilities, features, and limitations of each environment for 
+making specific recommendations for implementation purposes. 
+
+\textit{Habitat-Sim} is a flexible, high performance 3D simulator with a focus on embodied AI 
+research including navigation tasks \cite{habitat}, \cite{szot2022habitat20traininghome}. 
+It is capable of running thousands of simulations in parallel, with photo-realistic 3D 
+environments from real-world scans, semantic scene understanding and support for multiple 
+sensors (RGB, depth, semantic segmentation). It is however limited by a lack of in-built 
+social navigation features, human motion models can be integrated however it requires some
+technical understanding of AI and has a steep learning curve. 
+
+\textit{SEAN 2.0} is specifically designed for social navigation research with emphasis on 
+human behavior modeling \cite{tsoi2022sean2}. It is a high fidelity, extensible, and open-source simulation platform for fair evaluation of social navigation algorithms. 
+Environments correspond to the physical, static elements in a scenario in Unity. \textit{SEAN 2.0}
+\footnote{\href{https://sean.interactive-machines.com/}{https://sean.interactive-machines.com/}}
+includes warehouss, lab, and outdoor environments from \textit{SEAN 1.0} with annotations 
+for new pedestrian behaviours. It also provides numerous evalutation metrics including path 
+efficiency, path irregularity, completed, totol time etc. It is limited by the simulation 
+backend options as it limited to Unity.  
+
+\textit{HuNavSim} focuses specifically on realistic human navigation behavior modelling \cite{hunavsimros2human}.
+It is a new open-source software library used to simulate human navigation behaviors. The tool,
+programmed under the new ROS 2 framework, can be employed to control the human agents of 
+different general robotics simulators. It utilizes a Social Costmap Layer (a custom ROS 2 version 
+of the social navigation layers implemented in ROS 1
+\footnote{\href{https://github.com/robotics-upo/nav2_social_costmap_plugin}
+{https://github.com/robotics-upo/nav2\_social\_costmap\_plugin}})
+It provides a wide range of metrics for various scenarious, however it is limited by the number of 
+available planners and lacks documentation which makes it a difficult choice for educational 
+applications.
+
+\textit{Arena-rosnav} is an open-source  modular benchmark environment built on ROS that specifically targets
+socially aware navigation \cite{arenarosnav}. It provides support a total of 15 navigation planners (see table: \ref{tab:navigation_planners})
+which include classic, hybrid and learning-based planners. It (Arena Rosnav 3.0)\footnote{\href{https://3.arena-rosnav.org/}{https://3.arena-rosnav.org/}} provides 
+support for several both 2D and 3D simulators including Flatland, Rviz, Gazebo, Unity and provides 
+an interface to integrate other simulation softwares, worlds like  
+\textit{Hospital, Canteen, Campus, Factory and Warehouse} are supported in Gazebo and 
+\textit{Hospital, Restaurant School, Japanese Garden and Warehouse} are supported in Unity,
+additionally users can add or create new worlds. Multiple robots including 
+\textit{tutlebot3-burger, jackal, ridgeback, agv-ota, tiago, robotino, youbot, turtlebot3\_waffle\_pi etc.} 
+are supported and users can add more easily. It's limitations however are that it is a little above 
+50 GB in size and computationally intensive. 
+
+% \begin{table}[ht]
+%     \centering
+%     \caption{Available Navigation Planners}
+%     \label{tab:navigation_planners}
+%     \begin{tabular}{c c c}
+%         \hline
+%         \textbf{Classic}    & \textbf{Hybrid}                       & \textbf{Learning-based} \\
+%         \hline
+%         TEB~\cite{teb}      & Applr~\cite{applr}                    & ROSNavRL~\cite{arenarosnav} \\
+%         DWA~\cite{dwa}      & LfLH~\cite{lflh}                      & RLCA~\cite{rlca} \\
+%         MPC~\cite{mpc}      & Dragon~\cite{dragontrail}             & Crowdnav~\cite{crowdnav} \\
+%         Cohan~\cite{cohan}  & TRAIL~\cite{dragontrail}              & SARL~\cite{sarl} \\
+%                             &                                       & Arena~\cite{arena} \\
+%                             &                                       & CADRL~\cite{cadrl} \\
+%                             &                                       & Navrep~\cite{navrep} \\
+%         \hline
+%     \end{tabular}
+% \end{table}
+    
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\subsection{Comparison and Suitability for Education}
+Simulation tools differ in usability, fidelity, extensibility, and educational value:
+\begin{itemize}
+\item \textbf{Habitat-Sim} offers high visual fidelity but is difficult for beginners due 
+to limited social behavior modules.
+\item \textbf{SEAN 2.0} provides tailored environments for social navigation and good 
+evaluation metrics, making it suitable for advanced education.
+\item \textbf{HuNavSim} is lightweight and ROS 2 compatible but suffers from poor 
+documentation.
+\item \textbf{Arena-rosnav} is ideal for research and advanced robotics courses, providing 
+a wide range of planners and robot models, but requires high computational resources.
+\end{itemize}
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+
+\section{Summary of Gaps and Research Opportunities}
+
+While considerable progress has been made, several gaps persist:
+\begin{itemize}
+\item Lack of universal benchmarks for social navigation evaluation.
+\item Insufficient modeling of nuanced social behaviors (e.g., group dynamics, cultural norms).
+\item Limited cross-simulator compatibility.
+\item High barrier to entry due to complex setups or resource demands.
+\item Sparse integration between proxemics theory and learning-based planners.
+\end{itemize}
+
+Opportunities exist in developing:
+\begin{itemize}
+\item Lightweight, user-friendly simulation tools for education.
+\item Integrative frameworks combining proxemics.
+\end{itemize}
