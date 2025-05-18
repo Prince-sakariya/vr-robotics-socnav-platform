@@ -411,3 +411,6 @@ FodyWeavers.xsd
 *.synctex(busy)
 *.toc
 *.DB_Store
+
+# Ignore the objectives directory
+*objectives/
