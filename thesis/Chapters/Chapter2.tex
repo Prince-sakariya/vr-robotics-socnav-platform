@@ -92,7 +92,7 @@ social setting and their cultural backgrounds.
 The main contribution of Hall's Proxemics into path planning consists of providing a 
 framework to build social maps, i.e. dynamic maps in which humans are perceived 
 as obstacles following the definition of Hall's personal space.   
-The work by Henkel et al. \cite{henkel} evaluates different distance strategies by how 
+The work by \cite{henkel} evaluates different distance strategies by how 
 they affect the human's perception of the robot's likeability, intelligence and submissiveness.
 %-----------------------------------
 %	SUBSECTION 2
@@ -112,7 +112,7 @@ richer HRI experiences
 %----------------------------------------------------------------------------------------
 
 \section{Simulation Platforms for Social Navigation}
-Helbing et al. \cite{Helbing_1995} show that pedestrian motion can be described by a simple 
+\cite{Helbing_1995}, show that pedestrian motion can be described by a simple 
 social force model for individual pedestrian behavior. The social force model is an essential 
 component in many platforms including Arena-rosnav \cite{arenabench}, HuNavSim \cite{hunavsimros2human}
 etc. to simulate the pedestrian movements. 
@@ -121,12 +121,12 @@ planner determines a path from the current location to the goal location, and a 
 follows the global path. Costmaps are created using static maps and real-time data from onboard
 sensors. \\
 
-Sacco et al. \cite{MPCwithsfm} use A* global planner and an MPC, with a detailed cost 
+\cite{MPCwithsfm}, use A* global planner and an MPC, with a detailed cost 
 function to achieve advanced social navigation capabilities with the help of SMPC (Social 
 Model Predictive Control) software stack. They leverage the predicitvity of MPC and the 
 reactivity of SFM, modelling the pedestrian motion.\\
 
-Chen et al. \cite{chen2018sociallyawaremotionplanning} presented SA-CADRL (Socially Aware Collision 
+\cite{chen2018sociallyawaremotionplanning}, presented SA-CADRL (Socially Aware Collision 
 Avoidance with Deep Reinforcement Learning) to explain/induce socially aware behaviors in a RL 
 framework. They generalized to multiagent ($n > 2$) scenarios through developing symmetrical neural
 network structure, and demonstrated on robotic hardware autonomous navigation at human walking 
@@ -142,7 +142,7 @@ their advantages and disadvantages are described.
 
 \subsection{Overview of Existing Platforms}
 This section focuses on capabilities, features, and limitations of each environment for 
-making specific recommendations for implementation purposes. 
+making specific recommendations for implementation purposes. \\
 
 \textit{Habitat-Sim} is a flexible, high performance 3D simulator with a focus on embodied AI 
 research including navigation tasks \cite{habitat}, \cite{szot2022habitat20traininghome}. 
@@ -150,7 +150,7 @@ It is capable of running thousands of simulations in parallel, with photo-realis
 environments from real-world scans, semantic scene understanding and support for multiple 
 sensors (RGB, depth, semantic segmentation). It is however limited by a lack of in-built 
 social navigation features, human motion models can be integrated however it requires some
-technical understanding of AI and has a steep learning curve. 
+technical understanding of AI and has a steep learning curve. \\
 
 \textit{SEAN 2.0} is specifically designed for social navigation research with emphasis on 
 human behavior modeling \cite{tsoi2022sean2}. It is a high fidelity, extensible, and open-source simulation platform for fair evaluation of social navigation algorithms. 
@@ -159,7 +159,7 @@ Environments correspond to the physical, static elements in a scenario in Unity.
 includes warehouss, lab, and outdoor environments from \textit{SEAN 1.0} with annotations 
 for new pedestrian behaviours. It also provides numerous evalutation metrics including path 
 efficiency, path irregularity, completed, totol time etc. It is limited by the simulation 
-backend options as it limited to Unity.  
+backend options as it limited to Unity.  \\
 
 \textit{HuNavSim} focuses specifically on realistic human navigation behavior modelling \cite{hunavsimros2human}.
 It is a new open-source software library used to simulate human navigation behaviors. The tool,
@@ -170,7 +170,7 @@ of the social navigation layers implemented in ROS 1
 {https://github.com/robotics-upo/nav2\_social\_costmap\_plugin}})
 It provides a wide range of metrics for various scenarious, however it is limited by the number of 
 available planners and lacks documentation which makes it a difficult choice for educational 
-applications.
+applications. \\
 
 \textit{Arena-rosnav} is an open-source  modular benchmark environment built on ROS that specifically targets
 socially aware navigation \cite{arenarosnav}. It provides support a total of 15 navigation planners (see table: \ref{tab:navigation_planners})
@@ -184,25 +184,26 @@ additionally users can add or create new worlds. Multiple robots including
 are supported and users can add more easily. It's limitations however are that it is a little above 
 50 GB in size and computationally intensive. 
 
-% \begin{table}[ht]
-%     \centering
-%     \caption{Available Navigation Planners}
-%     \label{tab:navigation_planners}
-%     \begin{tabular}{c c c}
-%         \hline
-%         \textbf{Classic}    & \textbf{Hybrid}                       & \textbf{Learning-based} \\
-%         \hline
-%         TEB~\cite{teb}      & Applr~\cite{applr}                    & ROSNavRL~\cite{arenarosnav} \\
-%         DWA~\cite{dwa}      & LfLH~\cite{lflh}                      & RLCA~\cite{rlca} \\
-%         MPC~\cite{mpc}      & Dragon~\cite{dragontrail}             & Crowdnav~\cite{crowdnav} \\
-%         Cohan~\cite{cohan}  & TRAIL~\cite{dragontrail}              & SARL~\cite{sarl} \\
-%                             &                                       & Arena~\cite{arena} \\
-%                             &                                       & CADRL~\cite{cadrl} \\
-%                             &                                       & Navrep~\cite{navrep} \\
-%         \hline
-%     \end{tabular}
-% \end{table}
-    
+\noindent TODO: fix appearance of citations.
+\begin{table}[ht]
+    \centering
+    \caption{Available Navigation Planners}
+    \label{tab:navigation_planners}
+    \begin{tabularx}{\textwidth}{X X X}
+        \hline
+        \textbf{Classic}    & \textbf{Hybrid}                       & \textbf{Learning-based} \\
+        \hline
+        TEB~\cite{teb}      & Applr~\cite{applr}                    & ROSNavRL~\cite{arenarosnav} \\
+        DWA~\cite{dwa}      & LfLH~\cite{lflh}                      & RLCA~\cite{rlca} \\
+        MPC~\cite{mpc}      & Dragon~\cite{dragontrail}             & Crowdnav~\cite{crowdnav} \\
+        Cohan~\cite{cohan}  & TRAIL~\cite{dragontrail}              & SARL~\cite{sarl} \\
+                            &                                       & Arena~\cite{arena} \\
+                            &                                       & CADRL~\cite{cadrl} \\
+                            &                                       & Navrep~\cite{navrep} \\
+        \hline
+    \end{tabularx}
+\end{table}
+   
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
@@ -216,9 +217,11 @@ to limited social behavior modules.
 evaluation metrics, making it suitable for advanced education.
 \item \textbf{HuNavSim} is lightweight and ROS 2 compatible but suffers from poor 
 documentation.
-\item \textbf{Arena-rosnav} is ideal for research and advanced robotics courses, providing 
+\item \textbf{Arena-Rosnav} is ideal for research and advanced robotics courses, providing 
 a wide range of planners and robot models, but requires high computational resources.
 \end{itemize}
+This thesis utilizes Arena-Rosnav, the reasons for selecting it are discussed in section 
+\ref{sec:platform_selection_and_justification}
 %----------------------------------------------------------------------------------------
 %	SECTION 4
 %----------------------------------------------------------------------------------------

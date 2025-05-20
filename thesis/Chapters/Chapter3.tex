@@ -1,6 +1,12 @@
 % Chapter Template
 
 \chapter{System Design and Implemenation} % Main chapter title
+This chapter presents a comprehensive overview of the system design and implementation details of 
+our social navigation educational platform. We begin with a thorough examination of the simulation 
+environment, including the rationale behind our platform selection and the architectural design 
+choices. We then detail the specific customizations made to enhance the educational value of the 
+system. Finally, we describe the implementation of various social navigation scenarios, focusing 
+on their design, challenges, and parameterization options.
 
 \label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
@@ -10,13 +16,82 @@
 
 \section{Overview of the Simulation Environment}
 
-
+The simulation environment forms the foundation of our educational platform for social robot navigation. 
+Its design required careful consideration of educational objectives, technical capabilities, and 
+accessibility for students with varying levels of robotics experience. After evaluating several 
+options, we selected Arena-Rosnav as our primary simulation platform.
 
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
 \subsection{Platform Selection and Justification}
+\label{sec:platform_selection_and_justification}
 
+The selection of Arena-Rosnav as our simulation environment was based on a systematic evaluation of 
+requirements for both research-grade social navigation experiments and effective educational tools. 
+We identified several critical requirements:
+
+\begin{itemize}
+    \item \textbf{ROS Integration}: The platform needed to offer seamless integration with the Robot 
+    Operating System (ROS) ecosystem, which remains the predominant middleware in robotics research 
+    and education.
+    \item \textbf{Social Navigation Support}: The environment needed native support for human agents 
+    and the ability to model social interactions.
+
+    \item \textbf{Scalability}: The platform should support scenarios with varying complexity, from 
+    simple corridor interactions to complex multi-agent environments.
+
+    \item \textbf{Reproducibility}: The environment needed to provide deterministic simulation capabilities 
+    for scientific reproducibility and consistent educational experiences.
+
+    \item \textbf{Extensibility}: The platform should allow for straightforward customization and extension 
+    to incorporate new navigation algorithms and social behavior models.
+
+    \item \textbf{Accessibility}: The simulation environment needed to be approachable for undergraduate 
+    students while still offering the depth required for graduate-level research.
+\end{itemize}
+
+Arena-Rosnav \cite{arena30} satisfies these requirements with its comprehensive feature set. Specifically, 
+Arena-Rosnav provides:
+
+\begin{enumerate}
+\item \textbf{Modular Architecture}: Arena-Rosnav offers a highly modular architecture that separates robot 
+models, navigation algorithms, and environmental factors. This modularity allows students to focus on specific 
+components without needing to understand the entire system at once.
+\item \textbf{Multiple Robot Support}: The platform supports various robot models (including TurtleBot3, 
+Jackal, and custom platforms), allowing for experimentation with different kinematic constraints and 
+sensor configurations without changing the underlying navigation code.
+
+\item \textbf{Advanced Human Simulation}: Arena-Rosnav implements the Social Force Model (SFM) 
+and ORCA (Optimal Reciprocal Collision Avoidance) for human agent movement, creating realistic crowd behaviors. 
+This allows for more authentic testing of social navigation algorithms compared to environments with simplistic 
+human models.
+
+\item \textbf{Scenario Generation}: The platform includes tools for procedural generation of environments 
+and scenarios, which facilitates systematic testing across a broad spectrum of conditions. This feature 
+is particularly valuable for our educational objectives, as it allows students to test navigation algorithms 
+against consistent challenges.
+
+\item \textbf{Benchmarking Tools}: Arena-Rosnav provides built-in performance metrics and visualization 
+tools that align well with our requirement for educational clarity and research rigor.
+
+\item \textbf{Active Community}: The platform has an active development community, ensuring longevity 
+and continuous improvement of the codebase.
+
+\item \textbf{Open-Source Accessibility}: As an open-source project, Arena-Rosnav allows for complete 
+transparency and modification, which is essential for both research innovation and educational customization.
+\end{enumerate}
+Other platforms considered included HuNavSim and Habitat-Sim. While these alternatives offered some advantages, 
+Arena-Rosnav provided the most comprehensive 
+feature set for our specific needs, particularly in human-robot interaction scenarios and educational 
+flexibility. Gazebo standalone environments lacked standardized human models and would have required significant 
+development to reach feature parity with Arena-Rosnav. Stage simulator, while lightweight, lacks the physical 
+fidelity needed for realistic social navigation research. Custom environments would have required prohibitive 
+development time without offering significant advantages over the already mature Arena-Rosnav platform.
+
+Furthermore, Arena-Rosnav's recent updates have enhanced its crowd simulation capabilities, with implementations 
+of the latest pedestrian modeling approaches and improved computational efficiency that makes it suitable 
+for running on standard laboratory computers available to students.
 
 
 %-----------------------------------
@@ -24,6 +99,104 @@
 %-----------------------------------
 
 \subsection{System Architecture}
+The architecture of our simulation environment builds upon the core Arena-Rosnav structure while integrating 
+additional components specific to social navigation education and research. The system architecture, 
+illustrated in Figure \ref{fig:system_architecture}, consists of five primary layers:
+
+\begin{figure}[h]
+    \centering
+    % Placeholder for system architecture diagram
+    \caption{System architecture of the social navigation simulation environment}
+    \label{fig:system_architecture}
+\end{figure}
+
+\subsubsection{Core Simulation Layer}
+At the foundation of our architecture is the core simulation layer, which provides the physical 
+simulation environment. This layer:
+\begin{itemize}
+    \item Utilizes Gazebo as the underlying physics engine, providing realistic simulation of 
+    robot dynamics, sensor interactions, and environmental physics.
+    \item Implements a temporal discretization model that balances simulation fidelity with 
+    computational efficiency, using a variable time-step approach that allocates more 
+    computational resources to complex interaction scenarios.
+    \item Provides environmental rendering through both Gazebo's built-in visualization 
+    and custom RViz configurations optimized for observing social navigation behaviors.
+    \item Manages simulation state, including robot poses, human positions and velocities, 
+    and environmental object states, all synchronized through ROS topic communication.
+\end{itemize}
+
+\subsubsection{Human Simulation Layer}
+The human simulation layer is responsible for generating realistic pedestrian behaviors:
+\begin{itemize}
+    \item Implements multiple pedestrian models including SFM (Social Force Model), which simulates humans 
+    as particles influenced by social and physical forces, and ORCA (Optimal Reciprocal Collision Avoidance), 
+    which provides more computationally efficient local navigation for large crowds.
+    \item Models human intentions through goal-directed behavior with configurable parameters 
+    for walking speed, personal space preferences, and decision-making characteristics.
+    \item Includes crowd formation models that can simulate common social groupings (pairs, families, 
+    tour groups) with appropriate inter-personal spacing and coordination behaviors.
+    \item Provides a human behavior API that allows for scripted scenarios where human agents follow 
+    predetermined paths or respond to environmental triggers, essential for reproducible educational 
+    experiments.
+\end{itemize}
+
+\subsubsection{Robot Navigation Layer}
+The robot navigation layer encapsulates the navigation stack components:
+\begin{itemize}
+    \item Integrates the standard ROS navigation stack with customizable costmap layers, 
+    including traditional layers (static, obstacle, inflation) and social navigation 
+    layers (proxemics, passing).
+    \item Implements multiple local planners, including the default Dynamic Window 
+    Approach (DWA) planner, Timed Elastic Band (TEB) planner, and custom social 
+    planners developed for this research.
+    \item Provides standardized interfaces for global planners, including A*, 
+    Dijkstra, and RRT variants, with hooks for social cost integration at the 
+    global planning level.
+    \item Exposes navigation parameters through both ROS parameter server and structured 
+    configuration files, facilitating systematic experimentation by students.
+\end{itemize}
+
+\subsubsection{Social Interaction Layer}
+The social interaction layer, which is our primary contribution to the Arena-Rosnav 
+architecture, implements social navigation concepts:
+\begin{itemize}
+    \item Provides the proxemics costmap layer that dynamically generates cost fields 
+    around humans based on proxemic theories of personal, social, and public space.
+    \item Implements the passing layer that models directional preferences when 
+    navigating around humans, incorporating cultural and contextual variables.
+    \item Includes visualization components that render proxemic zones, anticipated 
+    human trajectories, and robot planning decisions in human-interpretable formats.
+    \item Offers a social metrics collector that measures and records quantities such 
+    as minimum separation distance, personal space intrusions, and trajectory 
+    smoothness during navigation.
+\end{itemize}
+
+\subsubsection{Educational Interface Layer}
+The educational interface layer makes the system accessible to students:
+\begin{itemize}
+    \item Provides simplified launch files with graduated complexity, allowing students 
+    to start with basic scenarios and progressively engage with more complex system 
+    components.
+    \item Implements parameter templates for different experimental configurations, 
+    reducing the learning curve for system customization.
+    \item Includes data collection scripts that automatically store and process 
+    experimental results in formats suitable for analysis and report generation.
+    \item Offers debug visualization through custom RViz configurations that highlight 
+    relevant aspects of social navigation for educational understanding.
+\end{itemize}
+Data flow through this architecture follows a consistent pattern. Environmental perception 
+(simulated sensor data) flows from the core simulation layer to the robot navigation layer. 
+The human simulation layer provides human position and velocity data to both the core 
+simulation layer and the social interaction layer. The social interaction layer processes 
+human data to generate social costs, which are then integrated into the navigation layer's 
+planning processes. The educational interface layer primarily consumes data from other 
+layers for visualization and analysis while providing configuration inputs that modify 
+layer behaviors.
+
+This multi-layered architecture provides both the technical depth required for 
+research-grade experimentation and the conceptual clarity needed for educational 
+applications. The clear separation of concerns between layers allows students to focus 
+on specific aspects of social navigation without being overwhelmed by system complexity.
 
 
 %----------------------------------------------------------------------------------------
@@ -32,26 +205,229 @@
 
 \section{Customization for Educational Use}
 
+While Arena-Rosnav provides an excellent foundation for social navigation research, 
+significant customization was necessary to optimize it for educational purposes. Our 
+customizations focused on reducing complexity barriers, providing educational scaffolding, 
+and enhancing the visualization of social navigation concepts.
 
+\subsection{Simplified Configuration System}
+We developed a tiered configuration system that allows students to engage with increasing 
+levels of complexity:
+\begin{itemize}
+    \item \textbf{Level 1: Parameter Templates} - Predefined parameter sets that 
+    allow students to run complete experiments without parameter tuning, focusing
+    instead on observing and analyzing results.
+    \item \textbf{Level 2: Guided Configuration} - Template files with clearly documented 
+    parameters that students can modify within safe ranges, encouraging experimentation 
+    while preventing system failures due to invalid configurations.
+    \item \textbf{Level 3: Full Configuration} - Complete access to all system parameters 
+    for advanced students and research projects, with extensive documentation of parameter 
+    interactions and effects.
+\end{itemize}
+This tiered approach enables instructors to match system complexity to student preparation 
+and learning objectives. For introductory robotics courses, Level 1 configurations allow 
+students to focus on conceptual understanding. For advanced courses, Level 3 configurations 
+promote deeper technical engagement.
 
+\subsection{Enhanced Visualization Tools}
+We developed specialized visualization components that make social navigation concepts 
+visually explicit:
+\begin{itemize}
+    \item \textbf{Proxemic Visualization} - Custom RViz plugins that render personal, social, 
+    and public spaces around simulated humans as color-coded regions with appropriate 
+    transparency to maintain visibility of the underlying environment.
+    \item \textbf{Planning Visualization} - Visualization tools that show considered and 
+    rejected paths, highlighting how social costs influence navigation decisions.
+    \item \textbf{Cost Function Visualization} - Heat map displays that show the distribution 
+    of navigation costs throughout the environment, making the abstract concept of cost 
+    functions tangible for students.
+    \item \textbf{Metric Displays} - Real-time displays of key social navigation metrics 
+    (minimum separation distance, personal space intrusions, path efficiency) that allow 
+    students to immediately observe the effects of parameter changes.
+\end{itemize}
+These visualization enhancements are crucial for educational effectiveness, as they make abstract 
+algorithmic concepts visually concrete. Students can directly observe how proxemic models 
+influence robot behavior, building intuition that complements their theoretical understanding.
 
+\subsection{Structured Learning Scenarios}
+We developed a progression of learning scenarios that introduce social navigation concepts 
+in a structured sequence:
+\begin{itemize}
+    \item \textbf{Observation Scenarios} - Initial scenarios where students observe 
+    pre-configured robots navigating around humans, focusing on developing observational 
+    skills before implementation.
+    \item \textbf{Parameter Exploration Scenarios} - Scenarios where students modify specific 
+    parameters and observe outcomes, building cause-effect understanding of navigation algorithms.
+    \item \textbf{Comparative Analysis Scenarios} - Scenarios that run multiple navigation 
+    approaches simultaneously for side-by-side comparison, highlighting the advantages and 
+    limitations of different approaches.
+    \item \textbf{Challenge Scenarios} - Complex environments that test student understanding 
+    through navigation problems requiring thoughtful parameter selection and algorithm choice.
+\end{itemize}
+These structured scenarios provide a pedagogical progression that aligns with educational 
+best practices for skills development. Students move from guided observation to independent 
+problem-solving, developing both technical skills and conceptual understanding.
+
+\subsection{Documentation and Tutorials}
+We developed comprehensive educational materials specifically designed for the learning 
+progression:
+\begin{itemize}
+    \item \textbf{Conceptual Tutorials} - Materials explaining the theoretical foundations of 
+    social navigation, proxemics theory, and human-aware planning.
+    \item \textbf{Technical Walkthroughs} - Step-by-step guides for system installation, configuration, 
+    and operation, accommodating students with varying technical backgrounds.
+    \item \textbf{Experimental Guides} - Structured procedures for conducting experiments, including 
+    data collection protocols, analysis methods, and interpretation guidelines.
+    \item \textbf{Troubleshooting Resources} - Common error documentation and resolution strategies, 
+    reducing the frustration factor often associated with complex simulation environments.
+\end{itemize}
+Unlike general-purpose documentation, these materials are explicitly aligned with educational 
+objectives and student developmental progression. They incorporate pedagogical best practices 
+such as scaffolded learning, worked examples, and conceptual bridges between theory and 
+implementation.
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
 
 \section{Implementation of Social Navigation Scenarios}
-
+The effectiveness of our simulation environment depends significantly on the quality of the 
+implemented scenarios. We developed specific scenarios that highlight key aspects of social 
+navigation while providing controlled experimental conditions for both research and education.
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
 
 \subsection{Corridor Scenario Implementation}
+The corridor scenario represents one of the most common human-robot interaction contexts 
+in indoor environments. This scenario tests a robot's ability to navigate in confined spaces 
+while respecting human proxemic preferences.
 
+\subsubsection{Physical Environment Design}
+The corridor environment is implemented with the following characteristics:
+\begin{itemize}
+    \item \textbf{Dimensions} - The corridor measures 2.5 meters in width and 15 meters in 
+    length, representing a typical institutional hallway dimension that is narrow enough to 
+    force interaction decisions but wide enough to allow multiple navigation strategies.
+    \item \textbf{Boundary Definition} - Corridor walls are defined as both collision objects 
+    in the physics engine and as occupied cells in the static costmap layer, ensuring consistent 
+    representation across the simulation stack.
+    \item \textbf{Surface Properties} - The corridor floor uses a friction coefficient that 
+    accurately models typical indoor flooring, ensuring realistic robot motion dynamics, 
+    particularly for differential drive platforms that may experience wheel slip during 
+    rapid direction changes.
+    \item \textbf{Contextual Elements} - The environment includes typical corridor features 
+    such as doorways, wall fixtures, and occasional side tables that add environmental complexity 
+    without fundamentally changing the navigation challenge.
+\end{itemize}
+The physical dimensions were carefully selected based on architectural standards and 
+empirical studies of human comfort in corridor passing interactions. The width of 2.5 meters 
+creates what proxemics researchers call a "decision zone" where robots must make explicit 
+passing choices rather than simply maintaining maximum separation.
+
+\subsubsection{Human Agent Configuration}
+The human agents in the corridor scenario are configured to create realistic navigation 
+challenges:
+\begin{itemize}
+    \item \textbf{Movement Patterns} - Humans follow bidirectional paths along the corridor with 
+    randomized entry timing to create varied encounter scenarios (oncoming, overtaking, group passing).
+    \item \textbf{Walking Characteristics} - Human walking speeds are drawn from a normal 
+    distribution with mean 1.4 m/s and standard deviation 0.2 m/s, based on empirical 
+    human walking speed studies.
+    \item \textbf{Group Formations} - The scenario includes both individual pedestrians and 
+    small groups (pairs and triads) that maintain social formation during navigation, 
+    presenting more complex spatial challenges.
+    \item \textbf{Attention Models} - Humans are configured with variable attention states, 
+    including attentive (aware of and responsive to the robot) and inattentive 
+    (minimally responsive), reflecting the range of human behaviors in real environments.
+\end{itemize}
+These configurations create a rich variety of interaction scenarios while maintaining enough 
+consistency for experimental repeatability. The human models were calibrated against empirical 
+observations of pedestrian behavior in corridor environments to ensure behavioral realism.
+
+\subsubsection{Scenario Variants}
+We implemented multiple variants of the corridor scenario to isolate specific 
+navigation challenges:
+\begin{itemize}
+    \item \textbf{Basic Passing}     - A single oncoming human in an otherwise empty corridor, 
+    testing fundamental passing behavior.
+    \item \textbf{Multiple Passing} - Multiple humans moving in both directions, requiring 
+    the robot to handle sequential interactions.
+    \item \textbf{Group Navigation} - Scenarios featuring human groups that occupy more 
+    horizontal space, testing the robot's ability to navigate around collective social entities.
+    \item \textbf{Crowded Corridor} - High-density human traffic that approaches the 
+    corridor's capacity limit, testing navigation in socially dense environments.
+\end{itemize}
+These variants allow for systematic investigation of specific social navigation challenges
+while maintaining the basic corridor context. They progress from simple to complex 
+interactions, supporting both structured education and research depth.
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
 
 \subsection{Corner Scenario Implementation}
+The corner scenario tests a robot's ability to navigate blind corners safely and socially, 
+a significant challenge in many indoor environments. This scenario is particularly valuable 
+for evaluating how robots handle limited visibility combined with potential human encounters.
+
+\subsubsection{Physical Environment Design}
+The corner environment has the following characteristics:
+\begin{itemize}
+    \item \textbf{Geometry} - A 90-degree corner with 2.5-meter wide corridors on each 
+    side, creating a navigation challenge where the robot cannot see around the corner 
+    until committed to the turn.
+    \item \textbf{Visibility Constraints} - The corner is designed with solid walls that 
+    block both visual and laser sensor data, preventing the robot from detecting humans 
+    on the other side of the corner until physically approaching the intersection.
+    \item \textbf{Approach Zones} - The corridors extend 8 meters from the corner in 
+    each direction, providing sufficient distance for the robot to adjust its approach 
+    velocity based on corner-handling strategies.
+    \item \textbf{Environmental Markers} - Subtle environmental cues (floor coloration 
+    changes, wall textures) are included 2 meters before the corner, allowing for the 
+    development and testing of anticipatory algorithms that recognize corner contexts.
+\end{itemize}
+The corner geometry was specifically designed to create the partial observability problem 
+that makes corner navigation socially challenging. The 90-degree angle represents the most 
+common architectural corner configuration while creating a genuine blind spot that cannot 
+be fully resolved with current sensor technologies.
+
+\subsubsection{Human Agent Configuration}
+Human agents in the corner scenario are configured to create challenging interaction 
+situations:
+\begin{itemize}
+    \item \textbf{Trajectory Patterns} - Humans approach the corner from multiple 
+    directions with paths that create potential collision trajectories if the corner 
+    is navigated without social awareness.
+    \item \textbf{Variable Speeds} - Human walking speeds are more variable in this 
+    scenario (0.8 m/s to 1.8 m/s) to test robot adaptation to different human 
+    approach velocities.
+    \item \textbf{Corner Behavior Models} - Human agents implement realistic corner 
+    navigation behaviors, including trajectory adjustment, speed modulation when 
+    approaching blind corners, and recovery behaviors when near-collisions occur.
+    \item \textbf{Attention Distribution} - The scenario includes a higher proportion 
+    of distracted humans (e.g., looking at mobile devices) who may not actively avoid 
+    the robot, creating a more realistic and challenging navigation environment.
+\end{itemize}
+These human configurations create the challenging corner interactions observed in 
+real environments where humans must negotiate shared space with limited advance 
+information. The behavior models were validated against observational studies of 
+human corner navigation in public buildings.
+
+\subsubsection{Scenario Variants}
+We implemented several corner scenario variants to isolate specific navigation challenges:
+\begin{itemize}
+    \item \textbf{Basic Corner Encounter} - Single humans approaching from around 
+    the corner, testing fundamental corner navigation safety.
+    \item \textbf{Concurrent Approaches} - Multiple humans approaching the corner 
+    simultaneously from different directions, requiring more complex negotiation.
+    \item \textbf{Stationary Human} - A stationary human positioned just around the 
+    corner, testing the robot's ability to handle sudden static obstacles in socially 
+    appropriate ways.
+    \item \textbf{Dynamic Speed Adjustment} - Humans who change speed as they approach 
+    the corner, testing the robot's adaptation to changing human intentions.
+\end{itemize}
+These variants systematically explore the corner navigation challenge space, allowing 
+for controlled experiments that isolate specific aspects of the problem. The progression 
+from basic to complex scenarios supports both educational sequencing and systematic research.
 
 %-----------------------------------
 %	SUBSECTION 3
@@ -59,3 +435,125 @@
 
 \subsection{Parameterization and Modifiability}
 
+A key requirement for both educational use and research flexibility is comprehensive 
+parameterization of the simulation environment. We implemented a multi-level parameter 
+system that balances flexibility with usability.
+
+\subsubsection{Physical Environment Parameters}
+The physical environments are parameterized through:
+\begin{itemize}
+    \item \textbf{Dimensional Parameters} - Corridor width, length, corner angles, 
+    and approach distances can be modified through configuration files, allowing for 
+    systematic exploration of spatial constraints.
+    \item \textbf{Object Placement} - Environmental objects (side tables, plants, chairs) 
+    can be procedurally placed with controllable density and distribution parameters, 
+    enabling systematic variation of environmental complexity.
+    \item \textbf{Sensor Noise Models} - Realistic sensor noise can be applied with 
+    configurable intensity, allowing students to explore robustness to perceptual 
+    uncertainty.
+    \item \textbf{Surface Properties} - Floor friction, material reflectivity, and 
+    other physical properties can be adjusted to test navigation robustness across 
+    different environmental conditions.
+\end{itemize}
+These parameters allow for systematic manipulation of the physical challenges facing 
+the navigation system. The parameterization uses a hierarchical YAML structure that 
+organizes related parameters into logical groups, enhancing usability.
+
+\subsubsection{Human Behavior Parameters}
+Human agent behavior is highly parameterized:
+\begin{itemize}
+    \item \textbf{Motion Parameters} - Walking speed distributions, acceleration 
+    profiles, and directional variance can be adjusted to model different human 
+    movement patterns.
+    \item \textbf{Social Parameters} - Personal space preferences, group cohesion 
+    forces, and collision avoidance aggressiveness can be modified to represent 
+    different cultural and individual behavioral norms.
+    \item \textbf{Attentional Parameters} - Human attention to the robot, 
+    responsiveness to potential collisions, and path predictability can be 
+    adjusted to test robot adaptation to different human awareness levels.
+    \item \textbf{Trajectory Generation} - Goal positions, waypoint density, 
+    and path constraints can be modified to create different human movement 
+    patterns through the environment.
+\end{itemize}
+These parameters allow for modeling a wide range of human behaviors, from highly 
+predictable and robot-aware to unpredictable and inattentive. The parametric models 
+are based on established pedestrian simulation research, ensuring behavioral realism.
+
+\subsubsection{Navigation Algorithm Parameters}
+The robot navigation stack is comprehensively parameterized:
+\begin{itemize}
+    \item \textbf{Costmap Parameters} - Each costmap layer (static, obstacle, 
+    inflation, proxemics, passing) has adjustable parameters controlling its 
+    influence on navigation decisions. Key parameters include:
+    \begin{itemize}
+        \item Static layer: update frequency, obstacle inflation
+        \item Obstacle layer: obstacle detection thresholds, clearing thresholds
+        \item Inflation layer: inflation radius, cost scaling factor
+        \item Proxemics layer: personal/social/public space radii, cost decay functions
+        \item Passing layer: preferred passing side, minimum passing distance
+    \end{itemize}
+    \item \textbf{Local Planner Parameters} - The DWA and TEB planners 
+    expose parameters controlling:
+    \begin{itemize}
+        \item Path scoring weights (path distance, goal alignment, obstacle clearance)
+        \item Kinematic constraints (maximum velocities, accelerations)
+        \item Lookahead distance and planning horizon
+        \item Social navigation specific weights and constraints
+    \end{itemize}
+    \item \textbf{Global Planner Parameters} - A*, Dijkstra, and RRT planners expose parameters for:
+    \begin{itemize}
+        \item Heuristic weighting and behavior
+        \item Sampling strategy and density
+        \item Path optimization and smoothing
+        \item Social cost integration methods
+    \end{itemize}
+\end{itemize}
+These navigation parameters allow for systematic exploration of algorithm behavior 
+across a wide range of configurations. The parameters are exposed through both ROS 
+parameter server mechanisms and configuration files, supporting both runtime adjustment 
+and systematic experimental design.
+
+\subsubsection{Parameter Configuration Interface}
+To make this extensive parameterization accessible, we developed a layered 
+configuration interface:
+\begin{itemize}
+    \item \textbf{Scenario Configuration Files} - Top-level files that define complete 
+    scenarios, including environmental setup, human behavior patterns, and robot 
+    configurations.
+    \item \textbf{Component Configuration Files} - Modular files for specific system 
+    components (human models, robot navigation, sensors) that can be combined into 
+    complete scenarios.
+    \item \textbf{Parameter Templates} - Predefined parameter sets representing specific 
+    navigation strategies or experimental conditions that can be applied to any scenario.
+    \item \textbf{Educational Parameter Guides} - Documentation that explains parameter 
+    effects, reasonable ranges, and expected behavioral impacts for student experimentation.
+\end{itemize}
+This layered approach makes the complex parameter space accessible to users with different 
+expertise levels. Students can begin with scenario-level configurations and progressively 
+engage with component-level and individual parameters as their understanding develops.
+
+\section{Summary}
+This chapter has detailed our system design and implementation choices for creating an 
+effective social navigation simulation environment. We selected Arena-Rosnav as our 
+foundation due to its comprehensive feature set, particularly its support for realistic 
+human simulation and integration with the ROS ecosystem. Our implementation extends this 
+platform with specialized components for social navigation research and education.
+
+The system architecture provides clear separation between simulation, human modeling, 
+robot navigation, social interaction, and educational interface layers. This modular 
+design supports both research flexibility and educational clarity. Our customizations 
+for educational use, including simplified configuration systems, enhanced visualizations, 
+and structured learning scenarios, make complex social navigation concepts accessible to 
+students.
+
+The implemented scenarios—corridor and corner navigation—provide controlled environments 
+for investigating key social navigation challenges. These scenarios have been carefully 
+designed to balance realism with experimental control, supporting both educational 
+objectives and research rigor. The comprehensive parameterization of the environment 
+enables systematic exploration of navigation behaviors across a wide range of conditions.
+
+This implementation provides the technical foundation for the student experiments and 
+research contributions described in subsequent chapters. By combining research-grade 
+simulation capabilities with educational accessibility, our system supports both the 
+advancement of social navigation algorithms and the effective teaching of social 
+navigation concepts.
