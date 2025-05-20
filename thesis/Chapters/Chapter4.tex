@@ -4,58 +4,541 @@
 
 \label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
+Building upon the social navigation simulation environment described in Chapter 
+\ref{Chapter3}, this chapter outlines the methodological framework used 
+to evaluate both the technical efficacy of social navigation algorithms and their 
+educational value. Our methodology addresses the dual research objectives of 
+advancing social navigation algorithm performance and developing effective 
+educational approaches for teaching social navigation concepts.
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Experiment Design}
-
-
-
+\section{Experiment Design}\label{sec:experiment_design}
+The experimental design follows a systematic approach that isolates specific 
+aspects of social navigation while maintaining sufficient environmental complexity 
+to yield meaningful results. We employed both controlled comparative experiments 
+for algorithm evaluation and structured learning sequences for educational 
+assessment.
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
-\subsection{Scenario Setup}
 
-
+\subsection{Scenario Configuration}
+\label{subsec:scenario_configuration}
+To ensure experimental rigor, we developed a standardized approach to scenario 
+configuration that maintains consistency across experimental trials while allowing 
+for systematic parameter variation:
+\begin{itemize}
+    \item \textbf{Scenario Definition Protocol} -- Each experimental scenario is 
+    defined through a hierarchical YAML configuration that specifies environment 
+    geometry, human agent parameters, robot configuration, and navigation algorithm 
+    settings. This approach enables precise replication of experimental conditions.
+    \item \textbf{Initialization Procedures} -- Robot and human agent positions are 
+    initialized using consistent starting configurations with controlled randomization 
+    where appropriate. For each scenario variant, we defined standard starting regions 
+    rather than exact positions, allowing natural variation while maintaining comparable 
+    interaction conditions.
+    \item \textbf{Trial Duration and Termination Criteria} -- Experimental trials run 
+    until one of several termination conditions is met: successful navigation to goal, 
+    collision event, timeout (120 seconds), or deadlock detection (no progress for 15 seconds). 
+    This approach ensures comparable data collection across algorithm variants.
+    \item \textbf{Scenario Progression} -- Experiments follow a progression from baseline 
+    scenarios (single human, simple environment) to complex scenarios (multiple humans, 
+    challenging environmental features). This structured progression supports both 
+    incremental algorithm testing and pedagogical sequencing.
+\end{itemize}
+For each of the core scenarios described in Chapter \ref{Chapter3} (corridor and 
+corner navigation), we developed specific configuration variants that 
+systematically increase in complexity:
+\begin{table}[ht]
+    \centering
+    \caption{Scenario Progression for Experimental Evaluation}
+    \label{tab:scenario_progression}
+    \begin{tabularx}{\textwidth}{X X X}
+        \hline
+        \textbf{Complexity Level}           & \textbf{Corridor Scenario}                & \textbf{Corner Scenario} \\
+        \hline
+        Basic                               & Single oncoming human, centered approach  & Single human around corner, moderate speed \\
+        Intermediate                        & Multiple humans, bidirectional flow       & Multiple humans with varied approach speeds \\
+        Advanced                            & Group formations with social structures   & Blind corner with distracted humans \\
+        Complex                             & High-density crowd with bottlenecks       & Multiple corners with crossing patterns \\
+        \hline
+    \end{tabularx}
+\end{table}
+Through Arena-Rosnav's scenario generation capabilities, we programmatically created these
+ scenarios with consistent parameters while allowing controlled variation in human movement 
+ patterns. This approach yields statistically meaningful results while capturing the natural 
+ variability of human-robot interactions.
 
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
 
-\subsection{Variables and Metrics}
+\subsection{Variables and Parameters}
+\label{subsec:variables_parameters}
+The experimental design incorporates independent variables (controlled by the experimenter), 
+dependent variables (measured outcomes), and controlled variables (held constant 
+across experimental conditions).
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\subsubsection{Independent Variables}
+\label{subsubsec:independent_variables}
+We systematically manipulated the following independent variables across experimental trials:
+\begin{itemize}
+    \item \textbf{Navigation Algorithm Configuration}
+    \begin{itemize}
+        \item Social cost function parameters (personal space radius: 0.45m-1.2m)
+        \item Proxemic layer weighting (0.3-1.0 relative to obstacle costs)
+        \item Planning horizon duration (1.0s-3.5s for local planning)
+        \item Goal-directed vs. social compliance behavior weighting
+    \end{itemize}
+    \item \textbf{Human Density and Distribution}
+    \begin{itemize}
+        \item Number of humans (1-12)
+        \item Spatial distribution patterns (uniform, clustered, directional)
+        \item Group formation configurations (individuals, dyads, larger groups)
+    \end{itemize}
+    \item \textbf{Human Behavior Models}
+    \begin{itemize}
+        \item Attention levels (attentive, distracted, unaware)
+        \item Cooperation levels (cooperative, neutral, uncooperative)
+        \item Movement predictability (highly predictable to erratic)
+    \end{itemize}
+    \item \textbf{Environmental Constraints}
+    \begin{itemize}
+        \item Corridor width (1.8m-3.5m)
+        \item Corner angle (70°-110°)
+        \item Obstacle density and placement
+    \end{itemize}
+\end{itemize}
+These variables were manipulated using Arena-Rosnav's parameter configuration system, which 
+allows systematic parameter sweeps across predefined ranges. For educational experiments, 
+a subset of these variables was exposed to students through simplified interfaces appropriate 
+to their learning stage.
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+\subsubsection{Dependent Variables}
+\label{subsubsec:dependent_variables}
+We measured several categories of dependent variables to evaluate both technical performance 
+and social compliance:
+\begin{itemize}
+    \item \textbf{Navigation Efficiency Metrics}
+    \begin{itemize}
+        \item Path length ratio (actual/optimal)
+        \item Navigation time ratio (actual/optimal)
+        \item Smoothness of trajectory (jerk analysis)
+        \item Computational efficiency (planning cycle time)
+    \end{itemize}
+    \item \textbf{Safety Metrics}
+    \begin{itemize}
+        \item Minimum separation distance to humans
+        \item Collision count and near-miss frequency
+        \item Time spent in human personal/social spaces
+        \item Velocity modulation near humans
+    \end{itemize}
+    \item \textbf{Social Compliance Metrics}
+    \begin{itemize}
+        \item Adherence to social conventions (right/left passing, queuing)
+        \item Human trajectory disturbance (deviation from preferred paths)
+        \item Predictability of robot movement (human-reported comfort)
+        \item Social signal appropriateness (speed, direction changes)
+    \end{itemize}
+    \item \textbf{Educational Metrics} (for student experiments)
+    \begin{itemize}
+        \item Conceptual understanding assessment scores
+        \item Parameter tuning effectiveness
+        \item Algorithm selection appropriateness
+        \item Experimental design quality
+    \end{itemize}
+\end{itemize}
+These metrics were collected automatically through Arena-Rosnav's integrated data collection system, 
+which records comprehensive trajectory, planning, and interaction data for each experimental trial.
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\subsubsection{Controlled Variables}
+\label{subsubsec:controlled_variables}
+To ensure experimental validity, we held the following variables constant 
+across experimental conditions:
+\begin{itemize}
+    \item \textbf{Robot Platform Configuration}
+    \begin{itemize}
+        \item Physical dimensions (0.5m diameter circular footprint)
+        \item Sensor configuration (270° laser scanner, 4m range)
+        \item Maximum velocity constraints (0.5m/s linear, 1.2rad/s angular)
+        \item Actuator response characteristics (constant acceleration model)
+    \end{itemize}
+    \item \textbf{Simulation Parameters}
+    \begin{itemize}
+        \item Physics engine configuration (step size, solver iterations)
+        \item Sensor noise models (constant parameters)
+        \item Environmental conditions (lighting, floor texture)
+        \item Simulation time scaling (real-time execution)
+    \end{itemize}
+\end{itemize}
+These controlled variables ensure that observed differences in experimental outcomes can be 
+attributed to the independent variables rather than uncontrolled factors in the simulation 
+environment.
 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-
 \section{Data Collection Methods}
+\label{sec:data_collection}
+Our data collection approach combines automated quantitative measurements, qualitative 
+assessments, and educational evaluations to provide a comprehensive view of social 
+navigation performance.
 
+-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
 
+\subsection{Automated Measurement System}
+\label{subsec:automated_measurement}
+We extended Arena-Rosnav's data collection capabilities with specialized components 
+for social navigation metrics:
+\begin{itemize}
+        \item \textbf{Trajectory Recording System} -- Captures time-indexed position, 
+        velocity, and acceleration data for the robot and all human agents at 10Hz. 
+        This data forms the foundation for trajectory analysis, proximity calculations, 
+        and social compliance evaluation.
+        \item \textbf{Planning Process Instrumentation} -- Records internal planning data 
+        including considered paths, rejected trajectories, cost distribution maps, and 
+        computation time. This instrumentation provides insight into the navigation 
+        algorithm's decision-making process.
+        \item \textbf{Proxemic Violation Detection} -- Implements a zonal model of 
+        human personal space with concentric regions (intimate: 0-0.45m, personal: 0.45-1.2m, 
+        social: 1.2-3.6m) and continuously monitors for zone penetration events, recording 
+        duration and penetration depth.
+        \item \textbf{Social Convention Monitoring} -- Detects adherence to environment-specific 
+        social conventions including preferred passing side, yielding behavior, and queuing 
+        dynamics. This monitoring system uses geometric analysis of trajectories to identify 
+        convention adherence or violation.
+        \item \textbf{Environmental Context Tracking} -- Captures contextual information 
+        including location type (corridor, corner, open space), density conditions, and 
+        environmental constraints. This contextual data supports nuanced analysis of 
+        navigation behavior across different environmental conditions.
+    \end{itemize}
+Data collection runs as a distributed system integrated with ROS, with dedicated nodes 
+for different measurement aspects. All data is time-synchronized through the ROS clock 
+and stored in both ROS bag format (for detailed analysis) and processed CSV files 
+(for statistical analysis).
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\subsection{Qualitative Assessment}
+\label{subsec:qualitative_assessment}
+In addition to quantitative measurements, we conducted qualitative assessments of navigation 
+behavior:
+\begin{itemize}
+    \item \textbf{Expert Evaluation Protocol} -- We developed a structured protocol for 
+    expert assessment of robot social navigation behavior. This protocol includes rating 
+    scales for naturalness, predictability, appropriateness, and overall social intelligence, 
+    applied to recorded navigation episodes.
+    \item \textbf{Behavior Coding System} -- A formal coding system for categorizing specific 
+    robot behaviors during human interactions, including avoidance initiation timing, trajectory 
+    communication clarity, and recovery behavior appropriateness.
+    \item \textbf{Critical Incident Analysis} -- Detailed examination of edge cases and failure 
+    modes, documenting the circumstances and contributing factors to navigation breakdowns or 
+    socially inappropriate behaviors.
+\end{itemize}
+Three domain experts with backgrounds in robotics, human-robot interaction, and social 
+psychology independently evaluated a subset of experimental trials using these qualitative 
+methods. Inter-rater reliability was assessed using Cohen's kappa coefficient, with a m
+inimum threshold of $K > 0.7$ required for inclusion in the analysis.
+
+%-----------------------------------
+%	SUBSECTION 3
+%-----------------------------------
+\subsection{Educational Assessment}
+\label{subsec:educational_assessment}
+For the educational objectives of our research, we implemented a multi-faceted assessment 
+approach:
+\begin{itemize}
+    \item \textbf{Pre/Post Knowledge Assessments} -- Validated instruments measuring student 
+    understanding of key social navigation concepts before and after using the simulation 
+    environment. These assessments include both technical knowledge (algorithm operation, 
+    parameter effects) and conceptual understanding (proxemics theory, social navigation principles).
+    \item \textbf{Laboratory Task Performance} -- Structured tasks requiring students to 
+    achieve specific navigation objectives by configuring and tuning social navigation 
+    algorithms. Task performance is measured through objective metrics (success rate, efficiency) 
+    and process measures (approach, testing strategy).
+    \item \textbf{Design Challenge Evaluation} -- Open-ended design challenges requiring 
+    students to develop novel solutions to specific social navigation problems. Evaluation 
+    criteria include technical correctness, creativity, effectiveness, and justification quality.
+    \item \textbf{Reflective Analysis} -- Guided reflection assignments where students 
+    analyze the behavior of their navigation solutions and connect observations to 
+    theoretical principles. These reflections are assessed for depth of analysis, 
+    connection to theory, and evidence-based reasoning.
+\end{itemize}
+Educational assessments were conducted with undergraduate robotics students (n=24) and 
+graduate-level human-robot interaction students (n=17) using the simulation environment 
+under controlled classroom conditions.
 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
 
+
 \section{Evaluation Criteria}
+\label{sec:evaluation_criteria}
+We established comprehensive evaluation criteria that address both technical performance 
+and social dimensions of navigation, as well as educational effectiveness.
 
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
 
-\subsection{Technical Performance}
+\subsection{Technical Performance Criteria}
+\label{subsec:technical_performance}
+Technical performance was evaluated against the following criteria:
+\begin{itemize}
+    \item \textbf{Navigation Success Rate} -- The percentage of trials where the robot 
+    successfully reaches its goal position without collisions or deadlocks. This primary
+     measure of navigation competence is calculated across scenario categories with 
+     increasing difficulty thresholds for more complex environments.
+    \item \textbf{Path Efficiency} -- Measured as the ratio between actual path length 
+    and optimal path length (with no humans present). Efficiency thresholds were 
+    established for different environmental conditions, with the understanding that 
+    social navigation necessarily involves detours from the geometrically optimal path.
+    \item \textbf{Computational Efficiency} -- Planning cycle times must remain within 
+    real-time constraints (planning cycle < 100ms) to ensure responsive navigation. We 
+    also evaluated planning stability through analysis of planning cycle time variance.
+    \item \textbf{Robustness to Uncertainty} -- Performance degradation under sensor 
+    noise, human behavior unpredictability, and environmental variability. We systematically 
+    increased these uncertainty factors and measured the impact on navigation success 
+    and efficiency.
+\end{itemize}
+These criteria establish minimum thresholds for technical acceptability while recognizing 
+the inherent trade-offs involved in social navigation. Rather than optimizing for a single 
+technical metric, we seek balanced performance across the technical criteria while 
+maintaining social compliance.
+
 
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
 
-\subsection{Social Compliance}
+\subsection{Social Compliance Criteria}
+\label{subsec:social_compliance}
+Social compliance was evaluated against both general social navigation principles and 
+scenario-specific social conventions:
+\begin{itemize}
+    \item \textbf{Proxemic Compliance} -- Adherence to established proxemic zones around 
+    humans, measured through zone penetration frequency, duration, and depth. We established 
+    graduated compliance thresholds based on environmental constraints, with more stringent 
+    requirements in unconstrained spaces.
+    \item \textbf{Behavioral Legibility} -- The predictability and understandability of robot 
+    motion from a human perspective. This is assessed through trajectory analysis 
+    (acceleration patterns, path consistency) and expert evaluation of motion naturalness.
+    \item \textbf{Minimization of Human Disturbance} -- The degree to which robot navigation 
+    avoids disrupting human trajectories or causing humans to change their preferred paths. 
+    This is measured through analysis of human trajectory deviations in the presence vs. 
+    absence of the robot.
+    \item \textbf{Adherence to Social Conventions} -- Compliance with contextual social 
+    norms including:
+    \begin{itemize}
+        \item Corridor passing: Consistent side selection, appropriate speed modulation
+        \item Corner navigation: Cautious approach, clear intent signaling
+        \item Group navigation: Treating coherent groups as units, avoiding group separation
+    \end{itemize}
+\end{itemize}
+We recognize that social compliance criteria must be context-sensitive, with different 
+expectations in different environmental and cultural contexts. Our evaluation framework 
+accommodates these contextual factors through parameterized thresholds that can be adjusted 
+to reflect specific social contexts.
 
 %-----------------------------------
 %	SUBSECTION 3
 %-----------------------------------
 
-\subsection{Educational Effectiveness}
+\subsection{Educational Effectiveness Criteria}
+\label{subsec:educational_effectiveness}
+Educational effectiveness was evaluated against learning objectives at multiple levels:
+\begin{itemize}
+    \item \textbf{Knowledge Acquisition} -- Students should demonstrate understanding of:
+    \begin{itemize}
+        \item Proxemic theory and its application to robotics
+        \item Social cost function formulations and effects
+        \item Parameter-behavior relationships in social navigation
+        \item Evaluation methods for social navigation performance
+    \end{itemize}
+    \item \textbf{Skill Development} -- Students should develop abilities to:
+    \begin{itemize}
+        \item Configure and tune social navigation algorithms for specific contexts
+        \item Diagnose and resolve navigation issues through systematic parameter adjustment
+        \item Implement and modify social cost functions
+        \item Design effective experiments to evaluate navigation performance
+    \end{itemize}
 
+    \item \textbf{Conceptual Understanding} -- Students should form mental models that:
+    \begin{itemize}
+        \item Connect algorithm behavior to human social expectations
+        \item Recognize the inherent trade-offs in social navigation objectives
+        \item Anticipate how environmental factors influence appropriate social behavior
+        \item Apply social navigation principles across different robotic contexts
+    \end{itemize}
+\end{itemize}
+These educational criteria were assessed through a combination of direct measures (knowledge 
+tests, performance tasks) and indirect measures (reflective assignments, experimental design 
+quality).
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{Analysis Methods}
+\label{sec:analysis_methods}
+Our analysis approach combines statistical methods, trajectory analysis techniques, and 
+qualitative interpretation to derive meaningful insights from the experimental data.
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+\subsection{Statistical Analysis Framework}
+\label{subsec:statistical_analysis}
+We employed the following statistical methods to analyze experimental results:
+\begin{itemize}
+    \item \textbf{Hypothesis Testing} -- We formulated specific hypotheses about algorithm 
+    performance and social compliance, testing these hypotheses using appropriate statistical 
+    tests (t-tests for pairwise comparisons, ANOVA for multi-factor analysis). Significance 
+    threshold was set at p < 0.05 with Bonferroni correction for multiple comparisons.
+    \item \textbf{Parameter Sensitivity Analysis} -- To understand the relationship between 
+    algorithm parameters and navigation outcomes, we conducted sensitivity analysis using 
+    response surface methodology. This approach maps the parameter space to outcome metrics, 
+    identifying critical parameters and optimal operating regions.
+    \item \textbf{Multi-objective Performance Analysis} -- Given the inherent trade-offs 
+    between efficiency, safety, and social compliance, we employed multi-objective analysis 
+    techniques including Pareto frontier identification to characterize the performance 
+    envelope of different navigation approaches.
+    \item \textbf{Learning Analytics} -- For educational assessment, we applied learning 
+    analytics techniques including knowledge gain analysis (normalized pre/post differences), 
+    skill development trajectories, and correlation analysis between different assessment 
+    dimensions.
+\end{itemize}
+Statistical analysis was performed using R (v4.2.0) with specialized packages for 
+robotics data analysis and visualization (TrajR, HRIstats).
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\subsection{Trajectory Analysis}
+\label{subsec:trajectory_analysis}
+We developed specialized trajectory analysis methods to extract meaningful social navigation 
+metrics:
+\begin{itemize}
+    \item \textbf{Social Interaction Identification} -- Automated detection of interaction 
+    episodes within trajectory data, identifying when the robot and humans are engaged in 
+    navigation coordination. This detection uses proximity thresholds, relative velocity, 
+    and heading alignment to segment continuous trajectories into discrete interaction events.
+    \item \textbf{Navigation Strategy Classification} -- Machine learning based classification 
+    of robot navigation strategies (e.g., proactive avoidance, reactive adjustment, human-following) 
+    from trajectory features. This classification was trained on expert-labeled trajectory segments 
+    and achieves 87\% agreement with human coders.
+    \item \textbf{Quality of Interaction Metrics} -- Derived measures that combine multiple trajectory 
+    features to assess interaction quality, including fluency (smoothness of interleaved trajectories), 
+    coordination (mutual adaptation patterns), and minimal jerk criteria.
+\end{itemize}
+Trajectory analysis was implemented through custom Python libraries built on NumPy, SciPy, and 
+specialized robotics analysis tools, integrated with ROS through dedicated analysis nodes.
+
+%-----------------------------------
+%	SUBSECTION 3
+%-----------------------------------
+
+\subsection{Qualitative Analysis}
+\label{subsec:qualitative_analysis}
+For qualitative data from expert evaluations and student reflections, we implemented a 
+structured analysis approach:
+\begin{itemize}
+    \item \textbf{Thematic Analysis} -- Identification of recurring themes in qualitative data 
+    using an initial codebook developed from theoretical principles, expanded through inductive 
+    coding. Code application was performed by multiple coders with regular inter-coder 
+    reliability assessment.
+    \item \textbf{Critical Instance Analysis} -- Detailed examination of particularly successful 
+    or problematic navigation episodes, combining trajectory data, algorithm state information, 
+    and expert assessment to understand the factors contributing to the outcome.
+    \item \textbf{Comparative Case Analysis} -- Structured comparison of navigation behavior 
+    across different algorithms, environmental conditions, and human behavior models to identify 
+    patterns and principles that generalize across contexts.
+\end{itemize}
+Qualitative analysis was conducted using MAXQDA software with a team-based coding 
+approach that combines robotics expertise and human-robot interaction knowledge.
+
+%-----------------------------------
+%	SUBSECTION 4
+%-----------------------------------
+
+\section{Methodological Limitations}
+\label{sec:limitations}
+We acknowledge several limitations in our methodology that must be considered 
+when interpreting results:
+\begin{itemize}
+    \item \textbf{Simulation Fidelity Limitations} -- While Arena-Rosnav provides 
+    high-fidelity simulation, it cannot perfectly reproduce the complexity of real-world 
+    human behavior, particularly the subtle social signals and cultural variations present 
+    in human navigation. Our results should be interpreted with this limitation in mind.
+    \item \textbf{Human Model Simplifications} -- The human agent models, though based 
+    on empirical human movement data, necessarily simplify human decision-making and 
+    responsiveness. In particular, the models may not fully capture the adaptive and 
+    strategic aspects of human navigation behavior in response to robots.
+    \item \textbf{Scenario Coverage} -- While we have designed scenarios to represent 
+    common navigation contexts, they cannot exhaustively cover the full range of social 
+    navigation challenges. Results may not generalize to substantially different 
+    environments or interaction contexts.
+    \item \textbf{Educational Population Limitations} -- The educational assessment was 
+    conducted with computer science and robotics students who may have different prior 
+    knowledge and learning approaches than other potential user groups for social 
+    navigation education.
+\end{itemize}
+We have attempted to mitigate these limitations through careful experimental design, 
+validation of simulation components against real-world data where possible, and 
+appropriate qualification of conclusions based on methodological constraints.
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+
+\section{Summary}
+\label{sec:methodology_summary}
+This chapter has outlined a comprehensive methodological framework for evaluating 
+social navigation algorithms both technically and socially while assessing their 
+educational value. Our approach extends the capabilities of the Arena-Rosnav 
+simulation environment with specialized data collection, analysis, and evaluation 
+methods tailored to social navigation research.
+
+The experimental design provides systematic coverage of navigation scenarios with 
+controlled progression of complexity, while the data collection system captures 
+both quantitative metrics and qualitative aspects of navigation performance. Our 
+evaluation criteria balance technical performance with social compliance 
+considerations, recognizing that effective social navigation requires optimization 
+across multiple, sometimes competing objectives.
+
+The analysis methods combine statistical rigor, specialized trajectory analysis, 
+and structured qualitative approaches to derive meaningful insights from complex 
+navigation data. While acknowledging methodological limitations, this approach 
+provides a solid foundation for the experimental results presented in subsequent 
+chapters.
+
+This methodology supports both the scientific objectives of advancing social navigation 
+algorithms and the educational goals of developing effective teaching approaches for 
+social navigation concepts. By integrating these dual purposes into a unified 
+methodological framework, we contribute not only to the development of better 
+navigation algorithms but also to the training of future roboticists who will 
+implement these algorithms in real-world systems.
